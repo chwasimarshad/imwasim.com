@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENXSOFTS - Coming Soon</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            background-image: url('Gemini_Generated_Image_1fs4lc1fs4lc1fs4.jpg'); /* Replace 'your-image.jpg' with your image path */
+            background-repeat: no-repeat; /* Prevent image repetition */
+            background-size: cover; /* Adjust image size to cover the entire background */
+            background-position: center center; /* Center the image */
+        }
+        .container {
+            max-width: 600px;
+            margin: 5px auto;
+            padding: 20px;
+            background: #ffffff4e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .email-signup {
+            margin: 20px 0;
+        }
+        input[type="email"] {
+            padding: 10px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .countdown {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #74b300;
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #fff;
+        }
+    </style>
+</head>
+<body background="">
+    <div class="container">
+        <h1>Coming Soon</h1>
+        <p>We're working hard to bring something amazing to you. Stay tuned!</p>
+    
+        <div class="countdown" id="countdown">
+            <!-- Countdown will be displayed here -->
+        </div>
+
+        <p>
+            <img src="image_processing20201210-31109-12w96if-removebg-preview.png" width="300">
+        </p>
+
+        
+    </div>
+
+    <div class="container">
+        <div class="email-signup">
+            <p>Want to be notified when we launch?</p>
+            <form action="#" method="post">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <input type="submit" value="Subscribe">
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <footer>
+            <p>&copy; 2024 Your EnxSofts (Expert and exelence software solutions). All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Set the date we're counting down to
+        const countDownDate = new Date("2024-09-30T23:59:59").getTime();
+
+        // Update the count down every 1 second
+        const x = setInterval(function() {
+            // Get current date and time
+            const now = new Date().getTime();
+
+            // Calculate the remaining time
+            const distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes, and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result
+            document.getElementById("countdown").innerHTML = 
+                `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            // If the count down is finished, display a message
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "We're here!";
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
