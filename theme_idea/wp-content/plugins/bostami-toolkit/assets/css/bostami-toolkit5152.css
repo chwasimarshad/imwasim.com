@@ -1,0 +1,1380 @@
+/* =============================================================
+Author Name: ib-themes
+Description: CSS files of Bostami Toolkit
+Version:	1.0.0
+================================================================*/   
+
+
+/*
+************
+*************************
+05. parsonal info
+******************************************************* 
+*************************************************************** */
+.bostami-parsonal-info-area {
+	border-radius: 20px;
+	background-color: var(--common-white);
+	text-align: center;
+	padding: 40px 30px;
+	position: sticky;
+	top: 100px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .bostami-parsonal-info-area {
+    width: 100%;
+    margin-left: 0px;
+    padding: 30px 15px;
+    top: -40px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px),
+  only screen and (min-width: 768px) and (max-width: 991px) {
+  .bostami-parsonal-info-area {
+    width: 100%;
+    margin-left: 0px;
+    margin-bottom: 30px;
+    top: -40px;
+  }
+}
+@media (max-width: 767px) {
+  .bostami-parsonal-info-area {
+    width: 100%;
+    margin-left: 0px;
+    margin-bottom: 30px;
+    padding: 40px 20px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .bostami-parsonal-info-area {
+    padding: 40px 30px;
+  }
+}
+.bostami-parsonal-info-img {
+  width: 240px;
+  height: 240px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 21px;
+  margin-top: -180px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .bostami-parsonal-info-img {
+    width: 210px;
+    height: 210px;
+    margin-top: 0px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px),
+  only screen and (min-width: 768px) and (max-width: 991px),
+  (max-width: 767px) {
+  .bostami-parsonal-info-img {
+    margin-top: 0px;
+  }
+}
+.bostami-parsonal-info-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bostami-parsonal-info-name {
+  font-size: 26px;
+  text-transform: capitalize;
+  font-weight: 500;
+  color: var(--common-black);
+  font-family: "Roboto Slab", serif;
+  margin-bottom: 8px;
+}
+.btn-2.circle {
+  border-radius: 30px;
+}
+.dark-theme .btn-2.circle {
+  color: #fff;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .bostami-parsonal-info-name {
+    font-size: 20px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .bostami-parsonal-info-name {
+    font-size: 22px;
+  }
+}
+.bostami-parsonal-info-bio {
+  font-size: 14px;
+  display: inline-block;
+  font-weight: 500;
+  text-transform: capitalize;
+  color: var(--common-black);
+  font-family: "Poppins", sans-serif;
+  background-color: var(--light-white);
+  border-radius: 5px;
+  padding: 4px 20px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px),
+  only screen and (min-width: 768px) and (max-width: 991px),
+  (max-width: 767px) {
+  .bostami-parsonal-info-bio {
+    font-size: 14px;
+  }
+}
+.bostami-parsonal-info-social-link li {
+  display: inline-block;
+  margin: 0 4px;
+}
+.bostami-parsonal-info-social-link li a {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--light-white);
+  text-align: center;
+  line-height: 40px;
+  font-size: 18px;
+}
+.bostami-parsonal-info-social-link .facebook {
+  color: #1773ea;
+}
+.bostami-parsonal-info-social-link .facebook:hover {
+	background: #1773ea !important;
+	color: #fff !important;
+}
+.bostami-parsonal-info-social-link .twitter {
+  color: #1c9cea;
+}
+.bostami-parsonal-info-social-link .twitter:hover {
+  background: #1773ea;
+  color: #fff;
+}
+.bostami-parsonal-info-social-link .instagram {
+  color: #e12a72;
+}
+.bostami-parsonal-info-social-link .instagram:hover {
+  background: #e12a72;
+  color: #fff;
+}
+.bostami-parsonal-info-social-link .linkedin {
+  color: #144679;
+}
+.bostami-parsonal-info-social-link .linkedin:hover {
+  background: #144679;
+  color: #fff;
+}
+
+.bostami-parsonal-info-social-link li a:hover svg * {
+  fill: var(--common-white);
+}
+.bostami-parsonal-info-contact {
+  background-color: var(--light-white);
+  border-radius: 16px;
+  text-align: left;
+  padding: 20px 30px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .bostami-parsonal-info-contact {
+    padding: 20px 15px;
+  }
+}
+@media (max-width: 767px) {
+  .bostami-parsonal-info-contact {
+    padding: 20px 15px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .bostami-parsonal-info-contact {
+    padding: 20px 30px;
+  }
+}
+.bostami-parsonal-info-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.bostami-parsonal-info-contact-item:not(:first-child) {
+  border-top: 1px solid #e3e3e3;
+}
+.bostami-parsonal-info-contact-item .icon {
+	flex: 0 0 auto;
+	display: inline-block;
+	width: 44px;
+	height: 44px;
+	background-color: var(--common-white);
+	border-radius: 8px;
+	text-align: center;
+	line-height: 44px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.08);
+	transition: 0.3s;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .bostami-parsonal-info-contact-item .icon {
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+  }
+}
+.bostami-parsonal-info-contact-item .icon svg * {
+  transition: 0.3s;
+}
+.bostami-parsonal-info-contact-item i {
+  font-size: 22px;
+}
+.bostami-parsonal-info-contact-item.phone i {
+  color: #e93b81;
+}
+.bostami-parsonal-info-contact-item.email i {
+  color: #6ab5b9;
+}
+.bostami-parsonal-info-contact-item.location i {
+  color: #fd7590;
+}
+.bostami-parsonal-info-contact-item.calendar i {
+  color: #c17ceb;
+}
+.bostami-parsonal-info-contact-item .icon:hover svg * {
+  fill: var(--common-white);
+}
+.bostami-parsonal-info-contact-item .text {
+  display: inline-block;
+}
+.bostami-parsonal-info-contact-item .text span {
+  display: block;
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: capitalize;
+  font-weight: 400;
+  margin-bottom: 3px;
+}
+.bostami-parsonal-info-contact-item .text p {
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: var(--common-black);
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .bostami-parsonal-info-contact-item .text p {
+    font-size: 14px;
+  }
+}
+
+.bostami-parsonal-info-area.bostami-parsonal-info-2-area {
+  background-color: transparent;
+  width: unset;
+  margin-left: 0;
+  position: unset;
+}
+@media (min-width: 1920px) {
+  .bostami-parsonal-info-area.bostami-parsonal-info-2-area {
+    margin-top: 0;
+  }
+}
+.bostami-parsonal-info-area.bostami-parsonal-info-2-area .bostami-parsonal-info-img {
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: auto;
+  margin-bottom: 21px;
+  margin-top: 0;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .bostami-parsonal-info-area.bostami-parsonal-info-2-area .bostami-parsonal-info-img {
+    width: 240px;
+    height: 240px;
+  }
+}
+.bostami-parsonal-info-area.bostami-parsonal-info-2-area .bostami-parsonal-info-bio {
+  background: transparent;
+  color: #7b7b7b;
+}
+.bostami-parsonal-info-area.bostami-parsonal-info-2-area .bostami-parsonal-info-social-link li a:hover {
+	background: linear-gradient(97deg, rgb(250, 82, 82) 0%, rgb(221, 36, 118) 100%) !important;
+}
+
+.bostami-parsonal-info-area.about-2-page {
+  width: 100%;
+  margin-left: 0;
+  background: transparent;
+  position: unset;
+  padding: 0;
+}
+.bostami-parsonal-info-area.about-2-page .bostami-page-title-wrap {
+  text-align: left;
+}
+.bostami-parsonal-info-area.about-2-page .bostami-parsonal-info-img {
+  width: 100%;
+  height: 400px;
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.page-wrapper-2 .bostami-parsonal-info-contact-item .icon:hover {
+  background: linear-gradient(97deg, rgb(250, 82, 82) 0%, rgb(221, 36, 118) 100%);
+}
+
+.home-3 .bostami-parsonal-info-area {
+  width: 100%;
+  margin-left: 0;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .home-3 .bostami-parsonal-info-contact {
+    padding: 20px 10px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .home-3 .bostami-parsonal-info-contact-item .text p {
+    font-size: 14px;
+  }
+}
+.home-3 .bostami-parsonal-info-social-link li a:hover {
+  background: linear-gradient(97deg, rgb(250, 82, 82) 0%, rgb(221, 36, 118) 100%);
+}
+.home-3 .bostami-parsonal-info-contact-item .icon:hover {
+  background: linear-gradient(97deg, rgb(250, 82, 82) 0%, rgb(221, 36, 118) 100%);
+}
+
+/*
+************
+*************************
+06. client
+******************************************************* 
+*************************************************************** */
+.bostami-client {
+  padding-top: 40px;
+  padding-bottom: 70px;
+  background-color: var(--light-white-2);
+}
+.bostami-client-slider-logo {
+	padding: 0px 15px;
+	height: 62px !important;
+}
+.bostami-main-menu-wrap {
+  width: 144px;
+  background: white;
+  border-radius: 16px;
+  padding: 30px;
+  position: sticky;
+  top: -45px;
+}
+@media only screen and (min-width: 1400px) and (max-width: 1599px) {
+  .bostami-main-menu-wrap {
+    width: 120px;
+    padding: 18px;
+  }
+}
+
+.bostami-client-slider .swiper-slide {
+  text-align: center !important;
+}
+
+/*
+************
+*************************
+07. what do
+******************************************************* 
+*************************************************************** */
+.bostami-what-do-item {
+	border-radius: 12px;
+	display: flex;
+	gap: 20px;
+	padding: 20px;
+	padding-bottom: 15px;
+}
+.bostami-what-do-item i {
+  font-size: 35px;
+}
+.bostami-what-do-item.bg-prink i {
+  color: #d566ff;
+}
+.bostami-what-do-item.bg-catkrill i {
+  color: #dda10c;
+}
+.bostami-what-do-item.bg-catkrill i {
+  color: #ff6080;
+}
+.bostami-what-do-item.bg-prink.bg-blue i {
+  color: #269fff;
+}
+@media (max-width: 767px) {
+  .bostami-what-do-item {
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .bostami-what-do-item {
+    flex-wrap: nowrap;
+  }
+}
+.bostami-what-do-item .text .title {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 500;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px),
+  lg,
+  only screen and (min-width: 768px) and (max-width: 991px) {
+  .bostami-what-do-item .text .title {
+    font-size: 22px;
+  }
+}
+@media (max-width: 767px) {
+  .bostami-what-do-item .text .title {
+    font-size: 22px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .bostami-what-do-item .text .title {
+    font-size: 24px;
+  }
+}
+.bostami-what-do-item .text p {
+  margin-bottom: 0;
+  line-height: 30px;
+}
+
+.bostami-page-wrap .client-2-wrap {
+  border-radius: 20px;
+  padding-left: 25px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .page-wrapper-2 .bostami-what-do-item {
+    flex-wrap: wrap;
+  }
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .home-3 .bostami-what-do-item {
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .home-3 .bostami-what-do-item .text .title {
+    font-size: 20px;
+  }
+}
+
+/*
+************
+*************************
+08. resume
+******************************************************* 
+*************************************************************** */
+@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .bostami-card-wrap {
+    margin-bottom: 50px;
+  }
+}
+
+.bostami-card-item {
+  padding: 20px;
+  border-radius: 12px;
+  padding-top: 25px;
+}
+.bostami-card-item .card-subtitle {
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  margin-bottom: 9px;
+}
+.bostami-card-item .card-title {
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--heading-black);
+  margin-bottom: 4px;
+}
+.bostami-card-item .card-title span {
+  color: var(--body-text);
+}
+.bostami-card-item .card-text {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 0;
+}
+
+.skill-bar-item .title-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.skill-bar-item .title-wrap .title {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--body-text);
+  margin-bottom: 0;
+}
+.skill-bar-item .title-wrap .count {
+  display: block;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--body-text);
+}
+
+.skill-section {
+  background-color: var(--light-white-2);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .skill-bar-wrap {
+    margin-bottom: 50px;
+  }
+}
+
+.progress-bar-wrap {
+  height: 6px;
+  background: #edf2f2;
+  border-radius: 6px;
+  overflow: inherit;
+}
+
+.progress-line {
+  height: 100%;
+  border-radius: inherit;
+}
+
+.progress-bg-1 {
+  background-color: #ff6464;
+}
+
+.progress-bg-2 {
+  background-color: #9272d4;
+}
+
+.progress-bg-3 {
+  background-color: #5185d4;
+}
+
+.progress-bg-4 {
+  background-color: #ca56f2;
+}
+
+.knowledeges-item-wrap .gk-item {
+  display: inline-block;
+  font-size: 15px;
+  font-weight: 400;
+  background: #edf2f2;
+  border-radius: 8px;
+  padding: 5px 20px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+  .bostami-resume-page {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .bostami-resume-page {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section-wrap {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .section-wrap {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+}
+
+.page-wrapper-2 .border-redius-20 {
+  border-radius: 20px;
+}
+
+/*
+************
+*************************
+09. portfolio
+******************************************************* 
+*************************************************************** */
+.fillter-btn-wrap {
+  text-align: right;
+}
+@media (max-width: 767px) {
+  .fillter-btn-wrap {
+    text-align: left;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .fillter-btn-wrap {
+    text-align: right;
+  }
+}
+.fillter-btn-wrap .fillter-btn {
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  display: inline-block;
+  padding: 0 18px;
+  cursor: pointer;
+}
+.fillter-btn-wrap .fillter-btn:hover {
+  color: var(--theme-primary);
+}
+.fillter-btn-wrap .fillter-btn:is(.is-checked) {
+  color: var(--theme-primary);
+}
+
+.fillter-item {
+  display: inline-block;
+  border-radius: 12px;
+  padding: 20px;
+}
+.fillter-item .img {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 17px;
+  display: block;
+  transition: 0.1s;
+}
+.fillter-item:hover img {
+  transform: scale(1.1);
+}
+.fillter-item .item-subtitle {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: capitalize;
+}
+.fillter-item .item-title {
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: capitalize;
+  margin-bottom: 0;
+}
+.fillter-item .item-title:hover {
+	color: var(--theme-primary) !important;
+}
+
+.isotop-item,
+.grid-sizer {
+  width: 50%;
+  padding: 0 10px;
+}
+@media (max-width: 767px) {
+  .isotop-item,
+  .grid-sizer {
+    width: 100%;
+  }
+}
+
+.isotop-item > div,
+.isotop-item > div {
+  margin-bottom: 20px;
+}
+
+.portfolio-modal-box {
+  position: fixed;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4509803922);
+}
+.portfolio-modal-box .modal-dialog {
+  max-width: 850px;
+  height: 90vh;
+  overflow: hidden;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  border: none;
+  /* width */
+  /* Track */
+  /* Handle */
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .portfolio-modal-box .modal-dialog {
+    max-width: 660px;
+  }
+}
+@media (max-width: 767px) {
+  .portfolio-modal-box .modal-dialog {
+    max-width: 95%;
+    padding: 10px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .portfolio-modal-box .modal-dialog {
+    max-width: 95%;
+    padding: 30px;
+  }
+}
+.portfolio-modal-box .modal-dialog ::-webkit-scrollbar {
+  width: 10px;
+}
+.portfolio-modal-box .modal-dialog ::-webkit-scrollbar-track {
+  background-color: #e9e3e3;
+  border-radius: 10px;
+}
+.portfolio-modal-box .modal-dialog ::-webkit-scrollbar-thumb {
+  background: #9c9fa1;
+  border-radius: 10px;
+}
+.portfolio-modal-box .modal-dialog .modal-content {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+  position: relative;
+  padding-right: 15px;
+  border-radius: 0;
+  border: none;
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-header {
+  display: inline-block;
+  position: fixed;
+  right: 25%;
+  top: 5%;
+  z-index: 18;
+  border-bottom: 0;
+  padding: 0;
+}
+@media (min-width: 1800px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-header {
+    right: 23%;
+  }
+}
+@media only screen and (min-width: 1600px) and (max-width: 1799px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-header {
+    right: 18%;
+    top: 8%;
+  }
+}
+@media only screen and (min-width: 1400px) and (max-width: 1599px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-header {
+    right: 13%;
+    top: 11%;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-header {
+    right: 8%;
+    top: 10%;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-header {
+    right: 1%;
+    top: 9%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-header {
+    right: 1%;
+    top: 9%;
+  }
+}
+@media (max-width: 767px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-header {
+    right: 83%;
+    top: 4%;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-header {
+    right: 90%;
+    top: 10%;
+  }
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-header .close {
+  background: transparent;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: white;
+  border-color: white;
+  border: 1px solid;
+  line-height: 38px;
+  transition: 0.3s;
+}
+@media (max-width: 767px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-header .close {
+    border-color: #e12a72;
+    color: #e12a72;
+  }
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-header .close:hover {
+  rotate: 90deg;
+  border-color: #e12a72;
+  color: #e12a72;
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-body .h1-modal-img {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-body .blog-title {
+	font-size: 28px;
+	text-align: center;
+	color: #fa5252 !important;
+	margin-bottom: 35px;
+}
+@media (max-width: 767px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-body .blog-title {
+    margin-top: 20px;
+    font-size: 22px;
+  }
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-body .portfolio-modal-table {
+  margin-bottom: 20px;
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-body .portfolio-modal-table .portfolio-modal-table-text {
+  font-size: 18px;
+  font-weight: 400;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-body .portfolio-modal-table .portfolio-modal-table-text {
+    font-size: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-body .portfolio-modal-table .portfolio-modal-table-text {
+    font-size: 14px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .portfolio-modal-box .modal-dialog .modal-content .modal-body .portfolio-modal-table .portfolio-modal-table-text {
+    font-size: 16px;
+  }
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-body .portfolio-modal-table .portfolio-modal-table-text i {
+  display: inline-block;
+  margin-right: 10px;
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-body .portfolio-modal-table .portfolio-modal-table-text span {
+  font-weight: 500;
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-body .portfolio-modal-table .portfolio-modal-table-text a {
+  display: inline-block;
+  font-weight: 500;
+}
+.portfolio-modal-box
+  .modal-dialog
+  .modal-content
+  .modal-body
+  .portfolio-modal-table
+  .portfolio-modal-table-text
+  a:hover {
+  color: #fa5252;
+}
+.portfolio-modal-box .modal-dialog .modal-content .modal-body .h1-modal-paragraph {
+  margin-bottom: 30px;
+}
+
+.bostami-portfolio-2 .isotop-item,
+.bostami-portfolio-2 .grid-sizer {
+  width: 33.33%;
+  padding: 0 10px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .bostami-portfolio-2 .isotop-item,
+  .bostami-portfolio-2 .grid-sizer {
+    width: 33.33%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .bostami-portfolio-2 .isotop-item,
+  .bostami-portfolio-2 .grid-sizer {
+    width: 50%;
+  }
+}
+@media (max-width: 767px) {
+  .bostami-portfolio-2 .isotop-item,
+  .bostami-portfolio-2 .grid-sizer {
+    width: 100%;
+  }
+}
+.fillter-btn-wrap.filter-v2 .fillter-btn:hover {
+  color: #fa5252;
+}
+.fillter-btn-wrap.filter-v2 .fillter-btn.is-checked {
+  color: #fa5252;
+}
+.bostami-portfolio-2 .fillter-item .item-title:hover {
+  color: #fa5252 !important;
+}
+
+
+/*
+************
+*************************
+10. blog
+******************************************************* 
+*************************************************************** */
+.blog-slider-single {
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+.blog-slider-single .img {
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  display: block;
+}
+.blog-slider-single .img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.blog-slider-single:hover img {
+  transform: scale(1.1);
+}
+.blog-slider-single .blog-meta span {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+  margin-right: 5px;
+}
+.blog-slider-single .blog-meta .blog-cetagory {
+  position: relative;
+  padding-left: 12px;
+}
+.blog-slider-single .blog-meta .blog-cetagory::after {
+  content: "";
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--body-text);
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.blog-slider-single .blog-title {
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+.blog-slider-single .blog-title:hover {
+	color: var(--theme-primary) !important;
+}
+.blog-slider-wrap .blog-progation {
+  text-align: center;
+}
+.blog-slider-wrap .blog-progation span {
+  width: 12px;
+  height: 12px;
+  background-color: transparent;
+  border: 3px solid var(--theme-primary) !important;
+  margin: 0px 5px !important;
+  opacity: 1;
+}
+.blog-slider-wrap .blog-progation span:is(.swiper-pagination-bullet-active) {
+  background-color: var(--theme-primary);
+}
+
+.h1-modal-box {
+  position: fixed;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.4509803922);
+}
+.h1-modal-box .modal-dialog {
+  max-width: 850px;
+  height: 90vh;
+  overflow: hidden;
+  background-color: white;
+  padding: 30px;
+  border-radius: 20px;
+  border: none;
+  /* width */
+  /* Track */
+  /* Handle */
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .h1-modal-box .modal-dialog {
+    max-width: 660px;
+  }
+}
+@media (max-width: 767px) {
+  .h1-modal-box .modal-dialog {
+    max-width: 95%;
+    padding: 10px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .h1-modal-box .modal-dialog {
+    max-width: 95%;
+    padding: 30px;
+  }
+}
+.h1-modal-box .modal-dialog ::-webkit-scrollbar {
+  width: 10px;
+}
+.h1-modal-box .modal-dialog ::-webkit-scrollbar-track {
+  background-color: #e9e3e3;
+  border-radius: 10px;
+}
+.h1-modal-box .modal-dialog ::-webkit-scrollbar-thumb {
+  background: #9c9fa1;
+  border-radius: 10px;
+}
+.h1-modal-box .modal-dialog .modal-content {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 100%;
+  position: relative;
+  padding-right: 15px;
+  border-radius: 0;
+  border: none;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-header {
+  display: inline-block;
+  position: fixed;
+  right: 25%;
+  top: 5%;
+  z-index: 18;
+  border-bottom: 0;
+  padding: 0;
+}
+@media (min-width: 1800px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-header {
+    right: 23%;
+  }
+}
+@media only screen and (min-width: 1600px) and (max-width: 1799px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-header {
+    right: 18%;
+    top: 8%;
+  }
+}
+@media only screen and (min-width: 1400px) and (max-width: 1599px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-header {
+    right: 13%;
+    top: 11%;
+  }
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-header {
+    right: 8%;
+    top: 10%;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-header {
+    right: 1%;
+    top: 9%;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-header {
+    right: 1%;
+    top: 9%;
+  }
+}
+@media (max-width: 767px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-header {
+    right: 83%;
+    top: 4%;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-header {
+    right: 90%;
+    top: 10%;
+  }
+}
+.h1-modal-box .modal-dialog .modal-content .modal-header .close {
+  background: transparent;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  color: white;
+  border-color: white;
+  border: 1px solid;
+  line-height: 38px;
+  transition: 0.3s;
+}
+@media (max-width: 767px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-header .close {
+    border-color: #e12a72;
+    color: #e12a72;
+  }
+}
+.h1-modal-box .modal-dialog .modal-content .modal-header .close:hover {
+  rotate: 90deg;
+  border-color: #e12a72;
+  color: #e12a72;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-img {
+  border-radius: 15px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .blog-meta {
+  margin-bottom: 15px;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .blog-meta .blog-date,
+.h1-modal-box .modal-dialog .modal-content .modal-body .blog-meta .blog-cetagory {
+  font-size: 18px;
+  margin-right: 15px;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .blog-title {
+  font-size: 24px;
+  font-weight: 600;
+}
+@media (max-width: 767px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-body .blog-title {
+    font-size: 22px;
+  }
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-item {
+  display: flex;
+  gap: 30px;
+  border: 1px solid #fa5252;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+@media (max-width: 767px) {
+  .h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-item {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-item .img {
+  width: 125px;
+  height: 122px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 15px;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-item .content .name-date {
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-item .content .name-date .name {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-item .content .name-date .date {
+  font-size: 14px;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-item .content .comment-text {
+  margin-bottom: 5px;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-item .content .reply-btn {
+  transition: 0.3s;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-item .content .reply-btn:hover {
+  color: #fa5252;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-box .title {
+  font-size: 26px;
+  font-weight: 500;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-box textarea {
+  width: 100%;
+  height: 80px;
+  border: none;
+  background: #f3f6f6;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 15px;
+  font-size: 12px;
+}
+.h1-modal-box .modal-dialog .modal-content .modal-body .h1-modal-comment-box textarea::placeholder {
+  font-size: 12px;
+  color: #9c9fa1;
+}
+
+
+.page-wrapper-2 .blog-slider-wrap .blog-progation span {
+  border: 3px solid #fa5252 !important;
+}
+.page-wrapper-2 .blog-slider-wrap .blog-progation span:is(.swiper-pagination-bullet-active) {
+  background-color: #fa5252;
+}
+.page-wrapper-2 .blog-slider-single .blog-title:hover {
+  color: #fa5252;
+}
+
+.home-3 .blog-slider-wrap .blog-progation span {
+  border: 3px solid #f95054 !important;
+}
+.home-3 .blog-slider-wrap .blog-progation span:is(.swiper-pagination-bullet-active) {
+  background-color: #f95054;
+}
+.home-3 .blog-slider-single .blog-title:hover {
+  color: #fa5252;
+}
+
+/*
+************
+*************************
+11. contact
+******************************************************* 
+*************************************************************** */
+.contact-area {
+  padding: 60px 45px;
+  border-radius: 20px;
+}
+@media (max-width: 767px) {
+  .contact-area {
+    padding: 60px 20px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .contact-area {
+    padding: 60px 30px;
+  }
+}
+.contact-area .contact-title {
+  font-size: 25px;
+  font-weight: 400;
+  color: var(--body-text);
+  text-transform: capitalize;
+  margin-bottom: 13px;
+}
+.contact-area .contact-title-b {
+  font-size: 25px;
+  font-weight: 700;
+  text-transform: lowercase;
+  margin-bottom: 45px;
+}
+
+.contact-form .input-lebel {
+  font-size: 16px;
+  display: inline-block;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 1;
+}
+.contact-form .input-box {
+  display: block;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-bottom: 1px solid #b5b5b5;
+  background: transparent;
+  height: 15px;
+  transition: 0.3s;
+  transform-origin: top;
+  font-size: 14px;
+}
+.contact-form .input-box:is(.height) {
+  height: 40px;
+}
+
+.bostami-contact-item {
+  display: flex;
+  gap: 20px;
+  padding: 30px;
+  border-radius: 10px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .bostami-contact-item {
+    padding: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .bostami-contact-item {
+    padding: 20px;
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .bostami-contact-item {
+    padding: 30px;
+    flex-wrap: nowrap;
+  }
+}
+.bostami-contact-item .icon {
+  flex: 0 0 auto;
+  width: 35px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px) {
+  .bostami-contact-item .icon {
+    width: 40px;
+  }
+}
+@media (max-width: 767px) {
+  .bostami-contact-item .icon {
+    width: 40px;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .bostami-contact-item .icon {
+    width: 80px;
+  }
+}
+.bostami-contact-item .text .title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+.bostami-contact-item .text span {
+  display: block;
+  font-size: 18px;
+  font-weight: 400;
+  color: #44566c;
+  line-height: 30px;
+}
+
+
+
+/* Updates */
+.cs_brand a {
+	width: 100%;
+	text-align: center !important;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.skill-bar-item{
+  margin-bottom: 30px;
+}
+.skill-bar-item:last-child{
+  margin:0 !important;
+}
+.bg-transparent{
+  background:none !important;
+}
+
+.bostami-parsonal-info-bio-text {
+  margin: 0 0 16px;
+}
+.bostami-parsonal-info-bio-text:last-child {
+  margin: 0;
+}
+
+.bostami-contact-item a {
+  color: var(--body-text);
+  font-weight: 400;
+}
+.bostami-contact-item a:hover {
+  color: #F74D56;
+}
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+.bostami-parsonal-info-contact .title {
+	font-size: 26px;
+}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 767px) {
+  .bostami-parsonal-info-contact .title {
+    font-size: 24px;
+  }
+  }
