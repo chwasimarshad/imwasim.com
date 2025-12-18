@@ -350,7 +350,7 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 			
 <div class="wpcf7 no-js" id="wpcf7-f1429-p233-o1" lang="en-US" dir="ltr">
 <div class="screen-reader-response"><p role="status" aria-live="polite" aria-atomic="true"></p> <ul></ul></div>
-<form action="https://bostami-wp.ibthemespro.com/contact/#wpcf7-f1429-p233-o1" method="post" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" data-status="init">
+<form action="https://bostami-wp.ibthemespro.com/contact/#wpcf7-f1429-p233-o1" id="contact-form" method="post" class="wpcf7-form init" aria-label="Contact form" novalidate="novalidate" data-status="init">
 <div style="display: none;">
 <input type="hidden" name="_wpcf7" value="1429" />
 <input type="hidden" name="_wpcf7_version" value="5.8" />
@@ -366,17 +366,17 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 	</h5>
 	<div class="form-input-item mb-60">
 		<p><label class="input-lebel name">name *</label><br />
-<span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required input-box name" autocomplete="name" aria-required="true" aria-invalid="false" value="" type="text" name="your-name" /></span>
+<span class="wpcf7-form-control-wrap" data-name="your-name"><input size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required input-box name" autocomplete="name" aria-required="true" aria-invalid="false" value="" type="text" name="from_name" /></span>
 		</p>
 	</div>
 	<div class="form-input-item mb-60">
 		<p><label class="input-lebel gmail">Email *</label><br />
-<span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email input-box gmail" autocomplete="email" aria-required="true" aria-invalid="false" value="" type="email" name="your-email" /></span>
+<span class="wpcf7-form-control-wrap" data-name="your-email"><input size="40" class="wpcf7-form-control wpcf7-email wpcf7-validates-as-required wpcf7-text wpcf7-validates-as-email input-box gmail" autocomplete="email" aria-required="true" aria-invalid="false" value="" type="email" name="form_email" /></span>
 		</p>
 	</div>
 	<div class="form-input-item mb-40">
 		<p><label class="input-lebel message">Message *</label><br />
-<span class="wpcf7-form-control-wrap" data-name="textarea-749"><textarea cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea input-box message" aria-invalid="false" name="textarea-749"></textarea></span>
+<span class="wpcf7-form-control-wrap" data-name="textarea-749"><textarea cols="40" rows="10" class="wpcf7-form-control wpcf7-textarea input-box message" aria-invalid="false"  name="message"></textarea></span>
 		</p>
 	</div>
 	<div class="form-btn-wrap">
@@ -385,6 +385,32 @@ window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15
 	</div>
 </div><div class="wpcf7-response-output" aria-hidden="true"></div>
 </form>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+
+<script>
+  (function(){
+    emailjs.init("zl-HH6dmppTCtMEo4");
+  })();
+
+  document.getElementById("contact-form").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm(
+      "service_xe1aqlr",
+      "template_zpmel9q",
+      this
+    ).then(
+      function() {
+        //alert("Email sent successfully!");
+      },
+      function(error) {
+        //alert("Failed to send email");
+        console.error(error);
+      }
+    );
+  });
+</script>
 </div>
 		</div>
 				</div>
