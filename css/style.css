@@ -320,6 +320,37 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 .t-load { background: linear-gradient(135deg, var(--accent-soft), transparent 70%), var(--surface); }
 
+/* AI development lifecycle */
+.adlc-visual {
+    flex: 1; min-height: 250px; width: 100%; padding: 10px 0;
+    display: grid; place-items: center; align-content: center; gap: 2px;
+}
+.adlc-visual svg { display: block; width: min(100%, 280px); height: auto; overflow: visible; }
+.adlc-orbit {
+    fill: none; stroke: color-mix(in srgb, var(--accent) 42%, var(--border)); stroke-width: 1.5;
+    stroke-dasharray: 5 7; marker-end: url(#adlc-arrow); transform-origin: 130px 150px;
+    animation: adlc-spin 28s linear infinite;
+}
+#adlc-arrow path { fill: var(--accent); }
+.adlc-pulse {
+    fill: none; stroke: color-mix(in srgb, var(--accent) 18%, transparent); stroke-width: 12;
+    transform-origin: 130px 150px; animation: adlc-pulse 3.5s ease-in-out infinite;
+}
+.adlc-core { fill: url(#adlc-core-gradient); filter: drop-shadow(0 10px 22px color-mix(in srgb, var(--accent) 25%, transparent)); }
+.adlc-core-title, .adlc-core-sub, .adlc-node text {
+    font-family: var(--mono); text-anchor: middle; dominant-baseline: middle;
+}
+.adlc-core-title { fill: #fff; font-size: 13px; font-weight: 700; letter-spacing: .08em; }
+.adlc-core-sub { fill: rgba(255, 255, 255, .78); font-size: 8px; }
+.adlc-node rect { fill: var(--surface-2); stroke: var(--border); stroke-width: 1; }
+.adlc-node text { fill: var(--text-muted); font-size: 9px; font-weight: 600; letter-spacing: .02em; }
+.adlc-label {
+    font-family: var(--mono); font-size: .68rem; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: .08em; text-align: center;
+}
+@keyframes adlc-spin { to { rotate: 360deg; } }
+@keyframes adlc-pulse { 50% { scale: 1.1; opacity: .4; } }
+
 /* Workflow terminal (always dark, like a real editor) */
 .t-term {
     padding: 0; gap: 0; overflow: hidden; justify-content: flex-start;
@@ -720,6 +751,8 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     .t-intro { padding: 28px 22px; }
     .t-photo { min-height: 0; aspect-ratio: 1 / 1.05; }
     .tile { padding: 18px; }
+    .adlc-visual { min-height: 230px; padding: 2px 0; }
+    .adlc-visual svg { width: min(100%, 250px); }
     .t-stack { padding: 14px 0; }
     .tile-strong { font-size: 1.2rem; }
     .term { font-size: .7rem; padding: 12px 14px 16px; }
