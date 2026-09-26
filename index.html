@@ -113,19 +113,32 @@
     }
     </script>
 
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-L5KCTN0P42"></script>
+    <!-- Google Analytics 4: queued immediately, loaded after the critical render -->
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-L5KCTN0P42');
+        (function () {
+            var loaded = false;
+            function loadAnalytics() {
+                if (loaded) return;
+                loaded = true;
+                var script = document.createElement('script');
+                script.async = true;
+                script.src = 'https://www.googletagmanager.com/gtag/js?id=G-L5KCTN0P42';
+                document.head.appendChild(script);
+            }
+            window.addEventListener('load', function () { window.setTimeout(loadAnalytics, 5000); }, { once: true });
+            ['pointerdown', 'keydown', 'touchstart'].forEach(function (eventName) {
+                window.addEventListener(eventName, loadAnalytics, { once: true, passive: true });
+            });
+        }());
     </script>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css?v=9">
+    <link rel="preload" href="fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="fonts/jetbrains-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="css/style.css?v=10">
     <script>try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
 </head>
 <body>
