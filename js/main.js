@@ -34,7 +34,7 @@
         var aiKnowledge = [
             {
                 patterns: ["who is wasim", "about wasim", "tell me about", "summary", "profile", "background"],
-                answer: "Muhammad Wasim Arshad is an Engineering Manager and Software Architect in Lahore with 16+ years of experience. He combines engineering leadership, healthcare domain expertise and pragmatic architecture to modernize dependable SaaS products.",
+                answer: "Muhammad Wasim Arshad is an AI Solution Architect and Engineering Leader in Lahore with 16+ years of experience. He builds AI-powered healthcare systems, intelligent agents, agentic automation and scalable software platforms.",
                 links: [{ label: "Read the profile", href: "#about" }]
             },
             {
