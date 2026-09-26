@@ -61,6 +61,24 @@ body {
     overflow-x: hidden;
 }
 
+.error-page {
+    min-height: 100vh;
+    display: grid;
+    align-content: center;
+    justify-items: start;
+    gap: 1.25rem;
+    max-width: 760px;
+}
+
+.error-page h1 {
+    max-width: 14ch;
+    font-size: clamp(2.4rem, 8vw, 5.5rem);
+    line-height: .98;
+    letter-spacing: -.055em;
+}
+
+.error-page .muted { max-width: 58ch; }
+
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3 { line-height: 1.1; margin: 0; letter-spacing: -0.03em; }
@@ -237,6 +255,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* Photo */
 .t-photo { padding: 0; overflow: hidden; min-height: 320px; }
+.t-photo picture { position: absolute; inset: 0; z-index: 0; display: block; }
 .t-photo img {
     position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: center 25%;
@@ -546,8 +565,6 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
     transition: color .2s, border-color .2s, translate .2s var(--ease);
 }
 .socials a:hover { color: var(--accent); border-color: var(--accent); translate: 0 -3px; }
-.template-credit { padding-bottom: 28px; color: var(--text-muted); font-size: .72rem; text-align: center; }
-.template-credit a { color: var(--accent); }
 
 /* ============ Reveal on scroll ============ */
 .js .reveal {

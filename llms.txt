@@ -1,0 +1,46 @@
+# Muhammad Wasim Arshad
+
+> Engineering Manager and Software Architect in Lahore, Pakistan, with 16+ years of experience building and modernizing dependable software products.
+
+Canonical profile: https://imwasim.com/
+
+## Professional focus
+
+- Engineering leadership and technical strategy
+- Healthcare SaaS, EHR, EMR, eMAR, medical billing, scheduling and workforce management
+- Software architecture, microservices, modular monoliths, Clean Architecture, CQRS and event-driven systems
+- Cloud and serverless delivery with AWS Lambda and DynamoDB
+- AI-assisted requirements, design, development, testing, review and documentation
+- Product modernization, scalability, quality engineering and DevOps
+
+## Current role
+
+Muhammad Wasim Arshad is an Engineering Manager at iCareManager. He leads four cross-functional product teams and owns technical strategy, architecture, delivery planning, engineering quality and modernization across healthcare SaaS products.
+
+## Experience
+
+- Engineering Manager, iCareManager — August 2022 to present
+- Staff Engineer, iCareManager — March 2018 to August 2022
+- Principal Software Engineer, Credibal — May 2015 to March 2018
+- Senior Software Engineer and Team Lead, Hashe Computer Solutions — 2014 to 2015
+- Senior Software Engineer, Fortsolution — 2011 to 2014
+- Software Engineer, ApniMarket.pk — 2010 to 2011
+
+## Core technologies
+
+.NET, C#, Angular, AngularJS, React, React Native, Node.js, Ruby on Rails, PHP, JavaScript, REST APIs, AWS, Lambda, DynamoDB, SQL and MySQL.
+
+## Education
+
+- Master of Computer Science, Bahauddin Zakariya University
+- Bachelor's degree in Mathematics and Physics, Government Degree College Burewala
+- Project Management Program, LUMX
+
+## Authoritative links
+
+- Website: https://imwasim.com/
+- LinkedIn: https://www.linkedin.com/in/wasim-arshad-software-architect/
+- GitHub: https://github.com/chwasimarshad
+- Résumé: https://imwasim.com/books/wasim_arshad.pdf
+
+For the most current information, use the canonical profile above.

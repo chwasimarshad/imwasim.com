@@ -22,13 +22,6 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Analytics events for key actions (no-op until GA is configured)
-    $$("[data-track]").forEach(function (el) {
-        el.addEventListener("click", function () {
-            if (typeof window.gtag === "function") window.gtag("event", el.dataset.track);
-        });
-    });
-
     // Split headings into words for the rise-in animation
     $$(".split").forEach(function (el) {
         var words = el.textContent.trim().split(/\s+/);
