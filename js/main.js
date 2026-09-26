@@ -22,6 +22,154 @@
 
     document.getElementById("year").textContent = new Date().getFullYear();
 
+    // Ask Wasim AI: a private, résumé-grounded assistant that runs entirely in the browser
+    var aiOpen = document.querySelector("[data-ai-open]");
+    var aiPanel = document.getElementById("ai-assistant");
+    var aiClose = document.querySelector("[data-ai-close]");
+    var aiMessages = document.querySelector("[data-ai-messages]");
+    var aiForm = document.querySelector("[data-ai-form]");
+    var aiInput = document.querySelector("[data-ai-input]");
+
+    if (aiOpen && aiPanel && aiMessages && aiForm && aiInput) {
+        var aiKnowledge = [
+            {
+                patterns: ["who is wasim", "about wasim", "tell me about", "summary", "profile", "background"],
+                answer: "Muhammad Wasim Arshad is an Engineering Manager and Software Architect in Lahore with 16+ years of experience. He combines engineering leadership, healthcare domain expertise and pragmatic architecture to modernize dependable SaaS products.",
+                links: [{ label: "Read the profile", href: "#about" }]
+            },
+            {
+                patterns: ["current role", "current job", "work now", "icaremanager", "team", "teams", "leadership"],
+                answer: "Wasim is an Engineering Manager at iCareManager. He leads four cross-functional product teams and owns technical strategy, architecture, delivery planning, engineering quality and modernization across healthcare SaaS products.",
+                links: [{ label: "View experience", href: "#experience" }]
+            },
+            {
+                patterns: ["healthcare", "ehr", "emr", "emar", "medical billing", "scheduling", "workforce", "domain"],
+                answer: "Wasim’s healthcare experience spans EHR/EMR, eMAR, medical billing, workforce management, scheduling, appointments, training and provider management. He has led modernization of legacy eMAR capabilities using modern services and scalable architecture.",
+                links: [{ label: "See healthcare expertise", href: "#skills" }]
+            },
+            {
+                patterns: ["architecture", "system design", "microservices", "clean architecture", "cqrs", "event driven", "modular monolith", "pub sub", "scalability"],
+                answer: "His architecture toolkit includes microservices, modular monoliths, Clean Architecture, CQRS, event-driven systems, Pub/Sub and REST APIs. He selects patterns around product constraints, delivery risk, maintainability and scale.",
+                links: [{ label: "Explore architecture skills", href: "#skills" }]
+            },
+            {
+                patterns: ["ai", "artificial intelligence", "generative ai", "agentic", "automation", "ai assisted"],
+                answer: "Wasim applies AI-assisted engineering across requirements analysis, solution design, implementation, testing, code review and documentation. His focus is practical use with people accountable for every product and architecture decision.",
+                links: [{ label: "See AI capabilities", href: "#skills" }]
+            },
+            {
+                patterns: ["cloud", "aws", "lambda", "dynamodb", "serverless", "devops", "database"],
+                answer: "His cloud and data experience includes AWS, Lambda, DynamoDB, SQL, MySQL, serverless services, database scalability, deployments and DevOps. He built a serverless messaging and commenting service for healthcare workflows.",
+                links: [{ label: "View selected impact", href: "#testimonials" }]
+            },
+            {
+                patterns: ["technology", "technologies", "tech stack", "programming", "frontend", "backend", "mobile", "framework", "language"],
+                answer: "Wasim has worked with .NET, C#, Angular, AngularJS, React, React Native, Node.js, Ruby on Rails, PHP, JavaScript, Ionic, REST APIs, AWS, DynamoDB, SQL and MySQL.",
+                links: [{ label: "Browse the full skill set", href: "#skills" }]
+            },
+            {
+                patterns: ["experience", "career", "work history", "companies", "years"],
+                answer: "Wasim has 16+ years of experience across engineering and leadership roles at iCareManager, Credibal, Hashe Computer Solutions, Fortsolution and ApniMarket.pk. His progression spans Software Engineer through Staff Engineer, Principal Engineer and Engineering Manager.",
+                links: [{ label: "See career history", href: "#experience" }]
+            },
+            {
+                patterns: ["education", "degree", "university", "certification", "qualification", "bzu", "lumx"],
+                answer: "Wasim holds a Master of Computer Science from Bahauddin Zakariya University and a bachelor’s degree focused on Mathematics and Physics. He also completed a Project Management Program at LUMX in 2025.",
+                links: [{ label: "View education", href: "#education" }]
+            },
+            {
+                patterns: ["contact", "email", "linkedin", "github", "hire", "hiring", "opportunity", "available", "reach"],
+                answer: "You can reach Wasim by email or connect on LinkedIn. He is open to conversations about engineering leadership, healthcare products, software architecture and modernization challenges.",
+                links: [
+                    { label: "Email Wasim", href: "mailto:chouhdarywasim@gmail.com" },
+                    { label: "Open LinkedIn", href: "https://www.linkedin.com/in/wasim-arshad-software-architect/", external: true }
+                ]
+            },
+            {
+                patterns: ["resume", "résumé", "cv", "download"],
+                answer: "Wasim’s résumé includes his complete career history, technical skills, leadership experience and education.",
+                links: [{ label: "Download the résumé", href: "books/wasim_arshad.pdf", external: true }]
+            },
+            {
+                patterns: ["location", "where", "lahore", "pakistan", "timezone"],
+                answer: "Wasim is based in Lahore, Pakistan, in Pakistan Standard Time (UTC+5).",
+                links: [{ label: "View profile details", href: "#about" }]
+            }
+        ];
+
+        var normalize = function (text) {
+            return text.toLowerCase().replace(/[’']/g, "").replace(/[^a-z0-9+#.]+/g, " ").trim();
+        };
+        var stopWords = { "a": 1, "an": 1, "and": 1, "are": 1, "about": 1, "can": 1, "does": 1, "for": 1, "has": 1, "his": 1, "how": 1, "is": 1, "me": 1, "of": 1, "the": 1, "to": 1, "wasim": 1, "what": 1, "with": 1 };
+
+        var findAnswer = function (question) {
+            var normalized = normalize(question);
+            var words = normalized.split(/\s+/).filter(function (word) { return word && !stopWords[word]; });
+            var best = null, bestScore = 0;
+            aiKnowledge.forEach(function (item) {
+                var score = 0;
+                item.patterns.forEach(function (pattern) {
+                    var p = normalize(pattern);
+                    if (normalized.indexOf(p) !== -1) score += 5 + p.split(" ").length;
+                    p.split(" ").forEach(function (word) {
+                        if (!stopWords[word] && words.indexOf(word) !== -1) score += 1;
+                    });
+                });
+                if (score > bestScore) { bestScore = score; best = item; }
+            });
+            return bestScore >= 2 ? best : {
+                answer: "I can help with Wasim’s current role, healthcare domain experience, architecture, AI-assisted engineering, cloud skills, career history, education, résumé or contact details. Try one of the suggested questions below.",
+                links: [{ label: "Explore the full profile", href: "#about" }]
+            };
+        };
+
+        var addMessage = function (text, role, links) {
+            var message = document.createElement("div");
+            message.className = "ai-message " + role;
+            message.textContent = text;
+            (links || []).forEach(function (link) {
+                var a = document.createElement("a");
+                a.href = link.href;
+                a.textContent = link.label;
+                if (link.external) { a.target = "_blank"; a.rel = "noopener"; }
+                message.appendChild(document.createElement("br"));
+                message.appendChild(a);
+            });
+            aiMessages.appendChild(message);
+            aiMessages.scrollTop = aiMessages.scrollHeight;
+        };
+
+        var ask = function (question) {
+            var clean = question.trim();
+            if (!clean) return;
+            addMessage(clean, "user");
+            aiInput.value = "";
+            var result = findAnswer(clean);
+            window.setTimeout(function () { addMessage(result.answer, "bot", result.links); }, reduceMotion ? 0 : 180);
+        };
+
+        var openAssistant = function () {
+            aiPanel.hidden = false;
+            aiOpen.setAttribute("aria-expanded", "true");
+            window.setTimeout(function () { aiInput.focus(); }, 0);
+        };
+        var closeAssistant = function () {
+            aiPanel.hidden = true;
+            aiOpen.setAttribute("aria-expanded", "false");
+            aiOpen.focus();
+        };
+
+        aiOpen.addEventListener("click", function () { aiPanel.hidden ? openAssistant() : closeAssistant(); });
+        aiClose.addEventListener("click", closeAssistant);
+        aiForm.addEventListener("submit", function (event) { event.preventDefault(); ask(aiInput.value); });
+        $$("[data-ai-prompt]").forEach(function (button) {
+            button.addEventListener("click", function () { ask(button.dataset.aiPrompt); });
+        });
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && !aiPanel.hidden) closeAssistant();
+        });
+    }
+
     // Split headings into words for the rise-in animation
     $$(".split").forEach(function (el) {
         var words = el.textContent.trim().split(/\s+/);
