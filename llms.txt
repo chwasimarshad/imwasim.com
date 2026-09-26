@@ -38,9 +38,9 @@ Muhammad Wasim Arshad is an Engineering Manager at iCareManager. He leads four c
 
 ## Authoritative links
 
-- Website: https://imwasim.com/
-- LinkedIn: https://www.linkedin.com/in/wasim-arshad-software-architect/
-- GitHub: https://github.com/chwasimarshad
-- Résumé: https://imwasim.com/books/wasim_arshad.pdf
+- [Website](https://imwasim.com/)
+- [LinkedIn](https://www.linkedin.com/in/wasim-arshad-software-architect/)
+- [GitHub](https://github.com/chwasimarshad)
+- [Résumé](https://imwasim.com/books/wasim_arshad.pdf)
 
 For the most current information, use the canonical profile above.
