@@ -128,7 +128,7 @@ function imwasim_mcp_primitives(): string {
         <div class="primitive-grid">
             <button class="primitive is-active" type="button" data-detail="Tools are callable actions such as searching records, running a calculation, or opening a ticket. The model can propose a call; the host enforces policy and consent."><span>MODEL-CONTROLLED</span><h4>Tools</h4><p>Actions with typed inputs and outputs.</p></button>
             <button class="primitive" type="button" data-detail="Resources are addressable context such as documents, schemas, policies, or read-only records. Applications decide how they enter the model context."><span>APP-CONTROLLED</span><h4>Resources</h4><p>Context addressed with a URI.</p></button>
-            <button class="primitive" type="button" data-detail="Prompts are reusable interaction templates that users deliberately select, such as a clinical handoff summary or architecture review checklist."><span>USER-CONTROLLED</span><h4>Prompts</h4><p>Reusable workflows and instructions.</p></button>
+            <button class="primitive" type="button" data-detail="Prompts are reusable interaction templates that users deliberately select, such as an incident summary or architecture review checklist."><span>USER-CONTROLLED</span><h4>Prompts</h4><p>Reusable workflows and instructions.</p></button>
         </div>
         <figcaption class="figure-note" aria-live="polite">Tools are callable actions. The model can propose a call; the host enforces policy and consent.</figcaption>
     </figure>
@@ -164,7 +164,8 @@ function imwasim_faq_schema(): void {
         'mainEntity' => [
             ['@type' => 'Question', 'name' => 'What is Model Context Protocol?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Model Context Protocol is an open standard for connecting AI applications to external tools, data, and reusable prompts through a consistent interface.']],
             ['@type' => 'Question', 'name' => 'Does MCP replace APIs?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'No. MCP commonly sits above existing APIs and data systems, giving AI applications a standard way to discover and use their capabilities.']],
-            ['@type' => 'Question', 'name' => 'Is MCP safe for healthcare data?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'MCP can be part of a secure healthcare architecture, but compliance depends on authentication, authorization, consent, data minimization, audit logging, vendor controls, and the underlying systems.']],
+            ['@type' => 'Question', 'name' => 'What is the difference between MCP and RAG?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'RAG retrieves relevant information for a model context. MCP is a broader interoperability protocol that can expose resources, prompts, and callable tools. A system can use both together.']],
+            ['@type' => 'Question', 'name' => 'Who created MCP, and does OpenAI support it?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'MCP was created and open-sourced by Anthropic in 2024. OpenAI is an early adopter and core contributor and supports MCP through ChatGPT integrations and the OpenAI Agents SDK.']],
         ],
     ];
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
@@ -179,7 +180,7 @@ function imwasim_llms_txt(): void {
     status_header(200);
     header('Content-Type: text/plain; charset=utf-8');
     echo "# Wasim Arshad — Architecture, AI & Engineering Leadership\n\n";
-    echo "> Practical writing about AI-powered healthcare systems, software architecture, and engineering leadership.\n\n";
+    echo "> Practical writing about AI agents, software architecture, intelligent automation, and engineering leadership.\n\n";
     echo "## Articles\n\n";
     foreach (get_posts(['numberposts' => 50, 'post_status' => 'publish']) as $post) {
         echo '- [' . get_the_title($post) . '](' . get_permalink($post) . '): ' . wp_strip_all_tags(get_the_excerpt($post)) . "\n";

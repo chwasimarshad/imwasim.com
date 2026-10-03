@@ -138,11 +138,11 @@ def write_support_files() -> None:
     (OUTPUT / "llms.txt").write_text(
         """# Wasim Arshad — Architecture, AI & Engineering Leadership
 
-> Practical writing about AI-powered healthcare systems, software architecture, and engineering leadership.
+> Practical writing about AI agents, software architecture, intelligent automation, and engineering leadership.
 
 ## Articles
 
-- [Model Context Protocol (MCP): An Introduction for Engineering Leaders](https://imwasim.com/blog/model-context-protocol-mcp-introduction/): A practical introduction to MCP, its architecture and primitives, with guidance for responsible adoption in healthcare software.
+- [Model Context Protocol (MCP): The Missing Link for AI Agents](https://imwasim.com/blog/model-context-protocol-mcp-introduction/): A story-driven guide to MCP, AI agents, tool calling, context engineering, Anthropic, OpenAI, and secure AI automation.
 """,
         encoding="utf-8",
     )

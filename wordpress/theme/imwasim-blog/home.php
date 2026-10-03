@@ -4,7 +4,7 @@
         <div class="container">
             <p class="eyebrow">// Field notes by Wasim Arshad</p>
             <h1>Architecture, AI &amp; engineering leadership.</h1>
-            <p class="blog-hero__lead">Practical ideas for building dependable AI-powered healthcare systems, growing engineering teams, and modernizing software that matters.</p>
+            <p class="blog-hero__lead">Practical ideas for building dependable AI agents, scalable software platforms, strong engineering teams, and intelligent automation that matters.</p>
         </div>
     </section>
     <section class="blog-grid" id="topics">

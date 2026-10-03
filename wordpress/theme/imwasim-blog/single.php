@@ -11,7 +11,7 @@
         </div></header>
         <div class="article-body">
             <?php if (is_single('model-context-protocol-mcp-introduction')) : ?>
-            <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#why-mcp-exists">Why MCP exists</a></li><li><a href="#mental-model">A useful mental model</a></li><li><a href="#primitives">Tools, resources, prompts</a></li><li><a href="#request-flow">How a request flows</a></li><li><a href="#healthcare">Healthcare example</a></li><li><a href="#adoption">Adoption checklist</a></li></ol></nav>
+            <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#why-mcp-exists">Why MCP exists</a></li><li><a href="#anthropic-openai">Anthropic and OpenAI</a></li><li><a href="#mental-model">A useful mental model</a></li><li><a href="#primitives">Tools, resources, prompts</a></li><li><a href="#request-flow">How a request flows</a></li><li><a href="#incident-story">The agent becomes useful</a></li><li><a href="#adoption">Adoption checklist</a></li></ol></nav>
             <?php endif; ?>
             <div class="article-content"><?php the_content(); ?></div>
         </div>
