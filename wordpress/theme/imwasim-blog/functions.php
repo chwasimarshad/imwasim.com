@@ -58,6 +58,17 @@ function imwasim_social_meta(): void {
             'image' => $image,
         ];
         echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
+    } else {
+        echo '<link rel="canonical" href="' . esc_url(home_url('/')) . '">' . "\n";
+        $schema = [
+            '@context' => 'https://schema.org',
+            '@type' => 'Blog',
+            'name' => $title,
+            'description' => $description,
+            'url' => $url,
+            'publisher' => ['@type' => 'Person', 'name' => 'Muhammad Wasim Arshad', 'url' => 'https://imwasim.com/'],
+        ];
+        echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
     }
 }
 add_action('wp_head', 'imwasim_social_meta', 2);

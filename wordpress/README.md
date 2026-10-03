@@ -6,6 +6,7 @@ This directory contains the version-controlled WordPress layer for `imwasim.com/
 - `scripts/setup-local.sh` builds an ignored local WordPress installation.
 - `scripts/start-local.sh` serves the existing static portfolio and WordPress blog from one local origin.
 - `scripts/seed-content.php` creates the initial MCP article and blog settings.
+- `scripts/export-static.sh` exports the rendered listing and article for GitHub Pages.
 
 WordPress core, plugins, uploads, and the SQLite database are runtime artifacts and are not committed.
 
@@ -20,9 +21,17 @@ The setup script expects the official packages already downloaded to `/tmp/imwas
 
 Open `http://127.0.0.1:8080/blog/`. The local administrator is `wasim`; its preview-only password is printed by the setup script.
 
+After editing content, export the static GitHub Pages build while the preview server is running:
+
+```bash
+./wordpress/scripts/export-static.sh
+```
+
+The generated site is written to `blog/`. Commit that directory to publish it with the existing GitHub Pages site.
+
 ## Production requirements
 
-GitHub Pages serves static files and cannot execute WordPress. Publishing `/blog` requires PHP hosting with MySQL/MariaDB and routing `imwasim.com/blog` to that WordPress installation. The theme works with standard WordPress hosting; the SQLite integration is for local preview only.
+GitHub Pages serves static files and cannot execute WordPress. This project therefore uses WordPress with SQLite as the local authoring environment and commits a static export for production. The WordPress admin and plugins are available locally; production serves the generated HTML, CSS, JavaScript, fonts, metadata, and analytics without PHP.
 
 Install and activate these free plugins in production:
 

@@ -1,0 +1,7 @@
+# Wasim Arshad — Architecture, AI & Engineering Leadership
+
+> Practical writing about AI-powered healthcare systems, software architecture, and engineering leadership.
+
+## Articles
+
+- [Model Context Protocol (MCP): An Introduction for Engineering Leaders](https://imwasim.com/blog/model-context-protocol-mcp-introduction/): A practical introduction to MCP, its architecture and primitives, with guidance for responsible adoption in healthcare software.

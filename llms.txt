@@ -43,4 +43,8 @@ Muhammad Wasim Arshad is an Engineering Manager at iCareManager. He leads four c
 - [GitHub](https://github.com/chwasimarshad)
 - [Résumé](https://imwasim.com/books/wasim_arshad.pdf)
 
+## Articles
+
+- [Model Context Protocol (MCP): An Introduction for Engineering Leaders](https://imwasim.com/blog/model-context-protocol-mcp-introduction/) — A practical introduction to MCP architecture, primitives, governance and responsible adoption in healthcare software.
+
 For the most current information, use the canonical profile above.
