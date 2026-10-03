@@ -4,6 +4,7 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#080d18">
+    <script>(function(){try{var t=localStorage.getItem('theme')||localStorage.getItem('imwasim-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);}}catch(e){}}());</script>
     <link rel="icon" href="<?php echo esc_url('https://imwasim.com/favicon.svg'); ?>" type="image/svg+xml">
     <?php wp_head(); ?>
 </head>

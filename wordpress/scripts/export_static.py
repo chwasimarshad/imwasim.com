@@ -142,7 +142,7 @@ def write_support_files() -> None:
 
 ## Articles
 
-- [Model Context Protocol (MCP): The Missing Link for AI Agents](https://imwasim.com/blog/model-context-protocol-mcp-introduction/): A story-driven guide to MCP, AI agents, tool calling, context engineering, Anthropic, OpenAI, and secure AI automation.
+- [Model Context Protocol (MCP): The Missing Link for AI Agents](https://imwasim.com/blog/model-context-protocol-mcp-introduction/): A visual and technical guide to MCP architecture, protocol flow, AI agents, tool calling, context engineering, Anthropic, OpenAI, and secure AI automation.
 """,
         encoding="utf-8",
     )

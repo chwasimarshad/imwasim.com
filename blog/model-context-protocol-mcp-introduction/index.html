@@ -5,22 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#080d18">
+    <script>(function(){try{var t=localStorage.getItem('theme')||localStorage.getItem('imwasim-theme');if(t==='light'||t==='dark'){document.documentElement.setAttribute('data-theme',t);localStorage.setItem('theme',t);}}catch(e){}}());</script>
     <link rel="icon" href="https://imwasim.com/favicon.svg" type="image/svg+xml">
     <title>Model Context Protocol (MCP): The Missing Link for AI Agents &#8211; Wasim Arshad | Architecture, AI &amp; Engineering Leadership</title>
 <meta name='robots' content='max-image-preview:large' />
-    <meta name="description" content="A story-driven guide to Model Context Protocol, AI agents, tool calling, context engineering, MCP servers, and secure AI automation.">
+    <meta name="description" content="A visual and technical guide to Model Context Protocol, AI agents, MCP clients and servers, tool calling, context engineering, and secure AI automation.">
     <meta property="og:type" content="article">
     <meta property="og:title" content="Model Context Protocol (MCP): The Missing Link for AI Agents">
-    <meta property="og:description" content="A story-driven guide to Model Context Protocol, AI agents, tool calling, context engineering, MCP servers, and secure AI automation.">
+    <meta property="og:description" content="A visual and technical guide to Model Context Protocol, AI agents, MCP clients and servers, tool calling, context engineering, and secure AI automation.">
     <meta property="og:url" content="https://imwasim.com/blog/model-context-protocol-mcp-introduction/">
     <meta property="og:site_name" content="Wasim Arshad">
     <meta property="og:image" content="https://imwasim.com/img/muhammad-wasim-arshad-720.webp">
     <meta property="og:image:alt" content="Muhammad Wasim Arshad, AI Solution Architect and Engineering Leader">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Model Context Protocol (MCP): The Missing Link for AI Agents">
-    <meta name="twitter:description" content="A story-driven guide to Model Context Protocol, AI agents, tool calling, context engineering, MCP servers, and secure AI automation.">
+    <meta name="twitter:description" content="A visual and technical guide to Model Context Protocol, AI agents, MCP clients and servers, tool calling, context engineering, and secure AI automation.">
     <meta name="twitter:image" content="https://imwasim.com/img/muhammad-wasim-arshad-720.webp">
-    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Model Context Protocol (MCP): The Missing Link for AI Agents","description":"A story-driven guide to Model Context Protocol, AI agents, tool calling, context engineering, MCP servers, and secure AI automation.","datePublished":"2026-10-03T23:32:10+05:00","dateModified":"2026-10-03T23:32:10+05:00","mainEntityOfPage":"https://imwasim.com/blog/model-context-protocol-mcp-introduction/","author":{"@type":"Person","name":"Muhammad Wasim Arshad","url":"https://imwasim.com/"},"publisher":{"@type":"Person","name":"Muhammad Wasim Arshad","url":"https://imwasim.com/"},"image":"https://imwasim.com/img/muhammad-wasim-arshad-720.webp"}</script>
+    <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"Model Context Protocol (MCP): The Missing Link for AI Agents","description":"A visual and technical guide to Model Context Protocol, AI agents, MCP clients and servers, tool calling, context engineering, and secure AI automation.","datePublished":"2026-10-04T00:21:42+05:00","dateModified":"2026-10-04T00:21:42+05:00","mainEntityOfPage":"https://imwasim.com/blog/model-context-protocol-mcp-introduction/","author":{"@type":"Person","name":"Muhammad Wasim Arshad","url":"https://imwasim.com/"},"publisher":{"@type":"Person","name":"Muhammad Wasim Arshad","url":"https://imwasim.com/"},"image":"https://imwasim.com/img/muhammad-wasim-arshad-720.webp"}</script>
 <link rel="stylesheet" href="/blog/assets/style.css">
 <link rel="canonical" href="https://imwasim.com/blog/model-context-protocol-mcp-introduction/" />
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is Model Context Protocol?","acceptedAnswer":{"@type":"Answer","text":"Model Context Protocol is an open standard for connecting AI applications to external tools, data, and reusable prompts through a consistent interface."}},{"@type":"Question","name":"Does MCP replace APIs?","acceptedAnswer":{"@type":"Answer","text":"No. MCP commonly sits above existing APIs and data systems, giving AI applications a standard way to discover and use their capabilities."}},{"@type":"Question","name":"What is the difference between MCP and RAG?","acceptedAnswer":{"@type":"Answer","text":"RAG retrieves relevant information for a model context. MCP is a broader interoperability protocol that can expose resources, prompts, and callable tools. A system can use both together."}},{"@type":"Question","name":"Who created MCP, and does OpenAI support it?","acceptedAnswer":{"@type":"Answer","text":"MCP was created and open-sourced by Anthropic in 2024. OpenAI is an early adopter and core contributor and supports MCP through ChatGPT integrations and the OpenAI Agents SDK."}}]}</script>
@@ -54,26 +55,92 @@
             <div class="breadcrumbs"><a href="/blog/">Blog</a> / AI Architecture</div>
             <p class="eyebrow">// AI Architecture</p>
             <h1>Model Context Protocol (MCP): The Missing Link for AI Agents</h1>
-            <p class="article-deck">A story-driven guide to Model Context Protocol, AI agents, tool calling, context engineering, MCP servers, and secure AI automation.</p>
-            <div class="article-meta"><span>By Muhammad Wasim Arshad</span><span>October 3, 2026</span><span>9 min read</span></div>
+            <p class="article-deck">A visual and technical guide to Model Context Protocol, AI agents, MCP clients and servers, tool calling, context engineering, and secure AI automation.</p>
+            <div class="article-meta"><span>By Muhammad Wasim Arshad</span><span>October 4, 2026</span><span>10 min read</span></div>
         </div></header>
         <div class="article-body">
-                        <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#why-mcp-exists">Why MCP exists</a></li><li><a href="#anthropic-openai">Anthropic and OpenAI</a></li><li><a href="#mental-model">A useful mental model</a></li><li><a href="#primitives">Tools, resources, prompts</a></li><li><a href="#request-flow">How a request flows</a></li><li><a href="#incident-story">The agent becomes useful</a></li><li><a href="#adoption">Adoption checklist</a></li></ol></nav>
-                        <div class="article-content"><p>At 9:07 on Monday morning, a product team watched its new AI assistant fail a simple test. The assistant could explain the company’s support process perfectly, but it could not find the latest incident, check the customer record, or create a follow-up task. It knew how to talk about work. It could not actually do the work.</p>
-<p>The problem was not the large language model. The problem was the gap between the model and the systems where useful context and actions lived. Every connection needed custom code, a new tool definition, another authentication path, and one more set of edge cases.</p>
-<p>Model Context Protocol, or MCP, is designed for that gap. It is an open standard that helps AI applications connect to tools, data, and reusable workflows through a consistent interface. For teams building AI agents, agentic AI, copilots, and AI automation, MCP can become the shared integration layer that turns a fluent demo into dependable software.</p>
+                            <figure class="interactive-figure whiteboard-figure">
+        <div class="whiteboard-scroll" role="region" aria-label="Scrollable MCP architecture diagram" tabindex="0">
+            <svg class="mcp-whiteboard" viewBox="0 0 1200 720" role="img" aria-labelledby="mcp-whiteboard-title mcp-whiteboard-desc">
+                <title id="mcp-whiteboard-title">Model Context Protocol architecture and request process</title>
+                <desc id="mcp-whiteboard-desc">A whiteboard diagram showing a user request entering an AI host and MCP client, crossing the MCP protocol boundary to servers that expose tools, resources, and prompts, then returning a structured result through an authorized and observable process.</desc>
+                <defs>
+                    <pattern id="paper-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#d8d4ca" opacity=".62"/></pattern>
+                    <filter id="marker-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4"/></filter>
+                    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#2563eb" stroke-width="2"/></marker>
+                    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#059669" stroke-width="2"/></marker>
+                    <style>
+                        .wb-title{font:800 34px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.wb-sub{font:700 16px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.wb-label{font:800 20px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.wb-small{font:700 13px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.wb-code{font:700 12px "JetBrains Mono",monospace;fill:#334155}.wb-box{fill:#fffdf7;stroke-width:4;filter:url(#marker-rough)}.wb-line{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;filter:url(#marker-rough)}
+                    </style>
+                </defs>
+                <rect width="1200" height="720" rx="22" fill="#fffdf7"/><rect width="1200" height="720" rx="22" fill="url(#paper-dots)"/>
+                <text class="wb-title" x="48" y="58">MODEL CONTEXT PROTOCOL — THE COMPLETE PATH</text>
+                <path class="wb-line" d="M48 72 C285 64 510 78 782 69" stroke="#f59e0b" opacity=".75"/>
+                <text class="wb-sub" x="49" y="99">A standard contract between an AI application and external capabilities</text>
+
+                <g aria-label="User intent"><circle cx="88" cy="220" r="43" fill="#fef3c7" stroke="#d97706" stroke-width="4" filter="url(#marker-rough)"/><circle cx="88" cy="207" r="11" fill="none" stroke="#92400e" stroke-width="3"/><path d="M66 246c6-27 38-27 44 0" fill="none" stroke="#92400e" stroke-width="3"/><text class="wb-label" x="48" y="290">USER</text><text class="wb-small" x="31" y="314">intent + approval</text></g>
+                <path class="wb-line" d="M135 220 C165 210 180 213 207 218" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+
+                <g aria-label="MCP host"><rect class="wb-box" x="220" y="132" width="270" height="184" rx="22" stroke="#2563eb"/><text class="wb-label" x="248" y="172">AI HOST</text><text class="wb-small" x="248" y="198">Chat • IDE • Agent app</text><rect x="248" y="218" width="110" height="64" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text class="wb-small" x="268" y="246">LLM / agent</text><text class="wb-small" x="278" y="267">loop</text><rect x="373" y="218" width="92" height="64" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/><text class="wb-small" x="390" y="246">policy +</text><text class="wb-small" x="391" y="267">consent</text></g>
+
+                <path class="wb-line" d="M490 220 C515 209 530 213 552 218" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+                <g aria-label="MCP client"><rect class="wb-box" x="566" y="151" width="184" height="140" rx="22" stroke="#7c3aed"/><text class="wb-label" x="592" y="190">MCP CLIENT</text><text class="wb-small" x="592" y="218">1 connection</text><text class="wb-small" x="592" y="240">per server</text><text class="wb-code" x="592" y="267">JSON-RPC 2.0</text></g>
+
+                <path class="wb-line" d="M752 220 C785 203 805 208 837 218" stroke="#059669" marker-end="url(#arrow-green)"/>
+                <text class="wb-small" x="760" y="185">stdio or</text><text class="wb-small" x="755" y="201">Streamable HTTP</text>
+
+                <g aria-label="MCP servers"><rect class="wb-box" x="852" y="116" width="300" height="238" rx="22" stroke="#059669"/><text class="wb-label" x="880" y="156">MCP SERVER(S)</text><text class="wb-small" x="880" y="180">Adapters over real systems</text><rect x="880" y="201" width="76" height="55" rx="11" fill="#dcfce7" stroke="#059669" stroke-width="2"/><text class="wb-small" x="899" y="224">TOOLS</text><text class="wb-code" x="893" y="244">tools/call</text><rect x="966" y="201" width="82" height="55" rx="11" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text class="wb-small" x="975" y="224">RESOURCES</text><text class="wb-code" x="978" y="244">read</text><rect x="1058" y="201" width="67" height="55" rx="11" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/><text class="wb-small" x="1066" y="224">PROMPTS</text><text class="wb-code" x="1074" y="244">get</text><path class="wb-line" d="M887 295 C948 278 1054 279 1114 297" stroke="#059669"/><text class="wb-small" x="884" y="326">APIs • files • databases • SaaS</text></g>
+
+                <path class="wb-line" d="M1090 367 C1007 401 883 406 780 398 C664 389 541 391 421 401 C299 411 192 408 112 374" stroke="#059669" stroke-dasharray="10 11" marker-end="url(#arrow-green)"/>
+                <text class="wb-small" x="493" y="380">structured content blocks / errors / metadata</text>
+
+                <text class="wb-label" x="48" y="456">THE REQUEST LIFECYCLE</text>
+                <path class="wb-line" d="M48 466 C218 458 371 471 528 464" stroke="#ef4444" opacity=".72"/>
+                <g transform="translate(48 496)">
+                    <g transform="translate(0 0)"><circle cx="30" cy="30" r="27" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text class="wb-label" x="23" y="38">1</text><text class="wb-small" x="0" y="80">CONNECT</text><text class="wb-code" x="0" y="101">negotiate</text></g>
+                    <path class="wb-line" d="M70 30H142" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+                    <g transform="translate(158 0)"><circle cx="30" cy="30" r="27" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/><text class="wb-label" x="23" y="38">2</text><text class="wb-small" x="0" y="80">DISCOVER</text><text class="wb-code" x="0" y="101">*/list</text></g>
+                    <path class="wb-line" d="M229 30H301" stroke="#7c3aed" marker-end="url(#arrow-blue)"/>
+                    <g transform="translate(317 0)"><circle cx="30" cy="30" r="27" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text class="wb-label" x="23" y="38">3</text><text class="wb-small" x="0" y="80">SELECT</text><text class="wb-code" x="0" y="101">schema match</text></g>
+                    <path class="wb-line" d="M388 30H460" stroke="#d97706" marker-end="url(#arrow-blue)"/>
+                    <g transform="translate(476 0)"><circle cx="30" cy="30" r="27" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/><text class="wb-label" x="23" y="38">4</text><text class="wb-small" x="0" y="80">AUTHORIZE</text><text class="wb-code" x="0" y="101">policy + user</text></g>
+                    <path class="wb-line" d="M547 30H619" stroke="#ef4444" marker-end="url(#arrow-green)"/>
+                    <g transform="translate(635 0)"><circle cx="30" cy="30" r="27" fill="#dcfce7" stroke="#059669" stroke-width="3"/><text class="wb-label" x="23" y="38">5</text><text class="wb-small" x="0" y="80">EXECUTE</text><text class="wb-code" x="0" y="101">call/read/get</text></g>
+                    <path class="wb-line" d="M706 30H778" stroke="#059669" marker-end="url(#arrow-green)"/>
+                    <g transform="translate(794 0)"><circle cx="30" cy="30" r="27" fill="#cffafe" stroke="#0891b2" stroke-width="3"/><text class="wb-label" x="23" y="38">6</text><text class="wb-small" x="0" y="80">RETURN</text><text class="wb-code" x="0" y="101">typed result</text></g>
+                    <path class="wb-line" d="M865 30H937" stroke="#0891b2" marker-end="url(#arrow-blue)"/>
+                    <g transform="translate(953 0)"><circle cx="30" cy="30" r="27" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3"/><text class="wb-label" x="23" y="38">7</text><text class="wb-small" x="0" y="80">OBSERVE</text><text class="wb-code" x="0" y="101">trace + audit</text></g>
+                </g>
+                <rect x="48" y="635" width="1104" height="50" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 7"/><text class="wb-small" x="72" y="666">CONTROL BOUNDARY → The host owns model context and consent. The server validates every request and protects the system behind it.</text>
+            </svg>
+        </div>
+        <figcaption>Whiteboard map: intent enters the host, capabilities cross the MCP boundary, and a governed result returns to the agent loop. Swipe horizontally on smaller screens.</figcaption>
+    </figure>
+                <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#technical-definition">Technical definition</a></li><li><a href="#why-mcp-exists">Why MCP exists</a></li><li><a href="#anthropic-openai">Anthropic and OpenAI</a></li><li><a href="#mental-model">Host, client, server</a></li><li><a href="#primitives">Core primitives</a></li><li><a href="#request-flow">Protocol process</a></li><li><a href="#transaction-walkthrough">Transaction walkthrough</a></li><li><a href="#adoption">Adoption checklist</a></li></ol></nav>
+                        <div class="article-content"><p>Model Context Protocol begins with a simple technical problem: a large language model can reason about a request, but it cannot reach a file, query a database, inspect a repository, or execute a business operation unless the application gives it a safe and structured connection.</p>
+<p>MCP defines that connection. It gives an AI host a standard way to discover capabilities, describe typed inputs, invoke tools, read resources, retrieve prompts, and receive structured results from an MCP server. The technical story is the path a request follows across those boundaries.</p>
+<p>For teams building AI agents, agentic AI, copilots, and intelligent automation, MCP can become a reusable integration layer between models and real systems. The diagram above shows the complete path before we examine each part.</p>
+<h2 id="technical-definition">A technical definition of MCP</h2>
+<p><strong>Model Context Protocol is an application-layer protocol, based on JSON-RPC 2.0, for exchanging context and capability calls between an AI host and external MCP servers.</strong> It defines message shapes, lifecycle behavior, capability discovery, and standard operations. It does not define the model, agent loop, database, or business API behind the connection.</p>
+<ul>
+<li><strong>Messages:</strong> requests expect a response, responses contain a result or error, and notifications report events without requiring a response.</li>
+<li><strong>Transports:</strong> local integrations commonly use standard input/output, while remote MCP servers use Streamable HTTP. Transport carries the protocol messages but does not change their meaning.</li>
+<li><strong>Capabilities:</strong> client and server advertise what they support. A host should use only the operations available for the negotiated protocol revision and connection.</li>
+<li><strong>Server primitives:</strong> tools expose callable actions, resources expose addressable context, and prompts expose reusable interaction templates.</li>
+<li><strong>Control boundary:</strong> the host controls model context, user interaction, and consent; the server validates requests and protects the underlying system.</li>
+</ul>
 <h2 id="why-mcp-exists">Why MCP exists</h2>
-<p>The team in our story had built four integrations for one assistant. A second AI experience would need the same four integrations again. Change one backend API and both applications could break in different ways. This many-to-many integration problem is where promising AI products often become difficult to scale.</p>
+<p>Without a shared protocol, each AI application builds a custom adapter for each external system. Add a second assistant, another model provider, and three more services, and the number of integration paths grows quickly. A change to one backend can break several clients in different ways.</p>
 <p>Custom tool calling works for a prototype. It becomes expensive when the number of models, AI agents, applications, and business systems grows. Governance also fragments because each connector invents its own schema, permissions, errors, and prompt conventions.</p>
 <p>MCP standardizes how an AI application discovers and uses external capabilities. The underlying API, database, vector store, or SaaS platform still does the real work. An MCP server adds a protocol-facing layer so an AI host can discover what is available, understand typed inputs, call the right capability, and receive a structured result.</p>
 <blockquote><p>MCP gives AI agents a common language for reaching the tools and context around them. The breakthrough is not more intelligence. It is dependable connection.</p></blockquote>
 <h2 id="anthropic-openai">From Anthropic to an open AI ecosystem</h2>
 <p><a href="https://www.anthropic.com/news/model-context-protocol" rel="noopener">Anthropic introduced and open-sourced Model Context Protocol in November 2024</a>. The original idea was direct: replace fragmented, one-off AI integrations with an open standard for secure connections between AI assistants and the systems where data and tools live. Claude Desktop and Claude Code helped many developers encounter MCP for the first time, establishing Anthropic MCP servers as an early reference point for the ecosystem.</p>
-<p>The story quickly grew beyond one company or model. In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation. The foundation brought together Anthropic, Block, and OpenAI alongside other major technology companies to support neutral, community-led infrastructure for agentic AI.</p>
+<p>The protocol quickly expanded beyond one company or model. In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation. The foundation brought together Anthropic, Block, and OpenAI alongside other major technology companies to support neutral, community-led infrastructure for agentic AI.</p>
 <p><a href="https://openai.com/index/agentic-ai-foundation/" rel="noopener">OpenAI describes itself as an early MCP adopter and core contributor</a>, using the protocol as a foundation for connectors and apps in ChatGPT. For developers, the <a href="https://openai.github.io/openai-agents-python/mcp/" rel="noopener">OpenAI Agents SDK includes MCP server integration</a> for hosted remote servers, Streamable HTTP, and local stdio connections. That means an OpenAI agent can discover and call MCP tools alongside its other capabilities.</p>
 <p>Anthropic and OpenAI approach agent products differently, but their support for MCP points to the same architectural idea: tools and context become more valuable when they are portable across AI applications. MCP is therefore best understood as model-neutral infrastructure. An MCP server can serve Claude, ChatGPT, an OpenAI API agent, a coding assistant, or a custom LLM application when the host supports the protocol.</p>
 <h2 id="mental-model">A useful mental model: host, client, server</h2>
-<p>Picture the team drawing three boxes on a whiteboard. Those boxes became the simplest useful mental model for MCP architecture:</p>
+<p>The architecture separates three responsibilities. Following a request through these roles is the clearest way to understand the protocol:</p>
 <ul>
 <li><strong>The MCP host</strong> is the AI application a person uses. It owns the conversation, orchestrates the AI agent, assembles context, and remains responsible for consent and policy.</li>
 <li><strong>The MCP client</strong> lives inside the host. It manages a protocol connection and exchanges structured messages with one MCP server.</li>
@@ -102,9 +169,9 @@
         <figcaption class="figure-note" aria-live="polite">The host owns the user experience and controls permissions, context, and consent.</figcaption>
     </figure>
     
-<p>The whiteboard suddenly made the architecture less mysterious. The MCP server did not need to know how the final chat, copilot, or autonomous agent experience was designed. The host no longer needed a one-off connector for every underlying system. Both sides could evolve around the same protocol contract.</p>
+<p>The MCP server does not need to know how the final chat, copilot, or autonomous agent experience is designed. The host does not need a one-off connector for every underlying system. Both sides can evolve around the same protocol contract.</p>
 <h2 id="primitives">Tools, resources, and prompts</h2>
-<p>Next, the team asked a practical question: what exactly should an MCP server expose? The protocol groups its core capabilities into three primitives. Each gives the AI application a different kind of power and assigns control differently.</p>
+<p>At the capability boundary, an MCP server exposes three core primitives. Each gives the AI application a different kind of access and assigns control differently.</p>
     <figure class="interactive-figure" data-interactive="primitives">
         <div class="interactive-figure__top"><div><h3>Three primitives, three kinds of context</h3><p>Explore what an MCP server can expose.</p></div></div>
         <div class="primitive-grid">
@@ -118,7 +185,7 @@
 <p><strong>MCP tools</strong> perform actions or computations. A tool can accept typed parameters, call a backend, and return a structured result. <strong>MCP resources</strong> provide addressable context such as documents, code, schemas, or records. <strong>MCP prompts</strong> are reusable interaction templates that a person can select to begin a known workflow.</p>
 <p>This distinction gave the team a better vocabulary for context engineering. Instead of pushing every possible fact into a giant prompt, the application could retrieve the right resource, offer a deliberate prompt, or let the model propose a narrowly defined tool call. The choice of primitive made control visible.</p>
 <h2 id="request-flow">How an MCP request flows</h2>
-<p>When the team traced its first real request, it discovered that reliable AI automation was not one magical jump from prompt to production. It was a sequence of bounded decisions.</p>
+<p>A reliable MCP interaction is a sequence of bounded protocol and application decisions. The exact lifecycle varies by protocol revision and transport, but the operational process remains consistent.</p>
     <figure class="interactive-figure">
         <div class="interactive-figure__top"><div><h3>From intent to a governed action</h3><p>A reliable integration makes every boundary visible.</p></div></div>
         <svg class="mcp-flow" viewBox="0 0 1000 180" role="img" aria-label="Five steps in an MCP request flow">
@@ -134,17 +201,20 @@
     </figure>
     
 <ol>
-<li><strong>Discover:</strong> the client learns which capabilities the server currently exposes.</li>
-<li><strong>Understand:</strong> the host reads the capability description and input schema so the model can form a valid request.</li>
-<li><strong>Authorize:</strong> identity, scopes, organizational policy, and user consent are evaluated before sensitive work.</li>
-<li><strong>Execute:</strong> the server validates inputs and invokes the underlying API or service.</li>
-<li><strong>Observe:</strong> the system records the outcome, exposes useful errors, and creates an audit trail appropriate to the risk.</li>
+<li><strong>Connect and negotiate:</strong> the client opens a supported transport and establishes the protocol revision and capabilities used by the connection.</li>
+<li><strong>Discover:</strong> the client obtains available tools, resources, or prompts through list operations such as <code>tools/list</code>.</li>
+<li><strong>Select:</strong> the host presents relevant schemas to the model. The model proposes the capability and arguments that match the user’s intent.</li>
+<li><strong>Authorize:</strong> the host evaluates identity, scopes, organizational policy, and user consent before a sensitive operation.</li>
+<li><strong>Execute:</strong> the client sends an operation such as <code>tools/call</code>, <code>resources/read</code>, or <code>prompts/get</code>. The server validates the request before touching the underlying system.</li>
+<li><strong>Return:</strong> the server responds with typed content, structured data, metadata, or a protocol error. The host decides what enters the model context.</li>
+<li><strong>Continue and observe:</strong> the agent loop interprets the result, produces an answer or another bounded action, and records traces and audit events.</li>
 </ol>
 <p>Good tool descriptions became part of the security model. A vague operation such as <code>update_record</code> gave the LLM and the user too little information. A narrow MCP tool with precise inputs, consequences, and constraints was easier to approve, test, observe, and revoke.</p>
-<h2 id="incident-story">The moment the AI agent became useful</h2>
-<p>By Friday, the assistant faced the same incident question that had defeated it on Monday. This time the host connected to three focused MCP servers: one for product documentation, one for incident management, and one for task creation.</p>
-<p>The AI agent first read an approved troubleshooting resource. It then used a search tool to find the active incident and compared the affected component with the customer’s configuration. Finally, it proposed a follow-up task. A person reviewed the action, approved it, and received a link to the new ticket.</p>
-<p>The model had not suddenly become smarter. The system around it had become better designed. Context arrived when needed, tool calling followed typed contracts, and a human remained in control of the consequential step. That is the practical promise of MCP for AI agents.</p>
+<h2 id="transaction-walkthrough">One MCP transaction, told as a technical story</h2>
+<p>Start with the user intent: “Find the current incident affecting service A and prepare a follow-up task.” The host sends the intent and the available tool definitions to the model. The model does not call the backend directly; it produces a structured proposal to use <code>search_incidents</code> with a service identifier.</p>
+<p>The host checks whether that tool is permitted and whether approval is required. The MCP client then serializes the call and sends it to the incident server. The server validates the JSON arguments, applies its own authorization rules, calls the incident API, and maps the response into MCP content blocks.</p>
+<p>The host adds the structured result to the model context. The model can now summarize the incident and propose <code>create_follow_up_task</code> on a different MCP server. Because that operation changes external state, the host pauses for explicit approval. After approval, the second server executes the action and returns the new task identifier. The host presents the final result and preserves the trace.</p>
+<p>That sequence is the technical narrative of MCP: intent becomes a typed capability request; policy gates the side effect; the server owns backend validation; and the result returns as structured context for the next model turn.</p>
 <h3>Design the boundary around the job</h3>
 <p>An MCP server should expose the smallest coherent capability needed for the workflow. Do not mirror an entire internal API merely because it already exists. Start from the user’s job, publish narrow operations, and keep business validation in the system that owns the data.</p>
 <h3>Keep deterministic controls outside the model</h3>
@@ -163,7 +233,7 @@
 <p>MCP does not choose the right product experience, fix a weak authorization model, guarantee trustworthy data, or eliminate AI evaluation. It is an interoperability standard. Architecture quality still depends on the boundaries around it.</p>
 <p>It also does not replace APIs, retrieval-augmented generation, or an agent framework. An MCP server often adapts existing APIs into capabilities suited to AI applications. RAG can retrieve relevant knowledge. An agent framework can coordinate planning and memory. MCP gives these systems a consistent way to exchange context and invoke tools.</p>
 <h2>Where to begin</h2>
-<p>Start as the team in our story did: build a thin vertical slice. Connect one AI host to one narrowly scoped MCP server, keep a person in control of consequential actions, and measure whether the workflow becomes faster or more reliable. The first goal is not a universal autonomous agent platform. It is evidence that a carefully governed capability improves real work.</p>
+<p>Start with a thin vertical slice. Connect one AI host to one narrowly scoped MCP server, keep a person in control of consequential actions, and measure whether the workflow becomes faster or more reliable. The first goal is not a universal autonomous agent platform. It is evidence that a carefully governed capability improves real work.</p>
 <p>Once that boundary is dependable, reuse becomes the multiplier. Other compatible AI applications can discover the same capability, and the server team can improve its contract without rebuilding every client integration. That is how an MCP proof of concept grows into an AI platform strategy.</p>
 <div class="article-sources">
 <h2>Official resources</h2>

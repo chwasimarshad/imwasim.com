@@ -1,11 +1,12 @@
 (() => {
   const root = document.documentElement;
-  const savedTheme = localStorage.getItem('imwasim-theme');
+  const savedTheme = localStorage.getItem('theme') || localStorage.getItem('imwasim-theme');
   if (savedTheme === 'light' || savedTheme === 'dark') root.dataset.theme = savedTheme;
 
   document.querySelector('.theme-toggle')?.addEventListener('click', () => {
     root.dataset.theme = root.dataset.theme === 'light' ? 'dark' : 'light';
-    localStorage.setItem('imwasim-theme', root.dataset.theme);
+    localStorage.setItem('theme', root.dataset.theme);
+    localStorage.removeItem('imwasim-theme');
   });
 
   const menuButton = document.querySelector('.menu-toggle');

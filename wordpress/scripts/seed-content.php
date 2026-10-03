@@ -8,18 +8,30 @@ if (!defined('ABSPATH')) {
 
 $title = 'Model Context Protocol (MCP): The Missing Link for AI Agents';
 $slug = 'model-context-protocol-mcp-introduction';
-$excerpt = 'A story-driven guide to Model Context Protocol, AI agents, tool calling, context engineering, MCP servers, and secure AI automation.';
+$excerpt = 'A visual and technical guide to Model Context Protocol, AI agents, MCP clients and servers, tool calling, context engineering, and secure AI automation.';
 
 $content = <<<'HTML'
-<p>At 9:07 on Monday morning, a product team watched its new AI assistant fail a simple test. The assistant could explain the company’s support process perfectly, but it could not find the latest incident, check the customer record, or create a follow-up task. It knew how to talk about work. It could not actually do the work.</p>
+<p>Model Context Protocol begins with a simple technical problem: a large language model can reason about a request, but it cannot reach a file, query a database, inspect a repository, or execute a business operation unless the application gives it a safe and structured connection.</p>
 
-<p>The problem was not the large language model. The problem was the gap between the model and the systems where useful context and actions lived. Every connection needed custom code, a new tool definition, another authentication path, and one more set of edge cases.</p>
+<p>MCP defines that connection. It gives an AI host a standard way to discover capabilities, describe typed inputs, invoke tools, read resources, retrieve prompts, and receive structured results from an MCP server. The technical story is the path a request follows across those boundaries.</p>
 
-<p>Model Context Protocol, or MCP, is designed for that gap. It is an open standard that helps AI applications connect to tools, data, and reusable workflows through a consistent interface. For teams building AI agents, agentic AI, copilots, and AI automation, MCP can become the shared integration layer that turns a fluent demo into dependable software.</p>
+<p>For teams building AI agents, agentic AI, copilots, and intelligent automation, MCP can become a reusable integration layer between models and real systems. The diagram above shows the complete path before we examine each part.</p>
+
+<h2 id="technical-definition">A technical definition of MCP</h2>
+
+<p><strong>Model Context Protocol is an application-layer protocol, based on JSON-RPC 2.0, for exchanging context and capability calls between an AI host and external MCP servers.</strong> It defines message shapes, lifecycle behavior, capability discovery, and standard operations. It does not define the model, agent loop, database, or business API behind the connection.</p>
+
+<ul>
+<li><strong>Messages:</strong> requests expect a response, responses contain a result or error, and notifications report events without requiring a response.</li>
+<li><strong>Transports:</strong> local integrations commonly use standard input/output, while remote MCP servers use Streamable HTTP. Transport carries the protocol messages but does not change their meaning.</li>
+<li><strong>Capabilities:</strong> client and server advertise what they support. A host should use only the operations available for the negotiated protocol revision and connection.</li>
+<li><strong>Server primitives:</strong> tools expose callable actions, resources expose addressable context, and prompts expose reusable interaction templates.</li>
+<li><strong>Control boundary:</strong> the host controls model context, user interaction, and consent; the server validates requests and protects the underlying system.</li>
+</ul>
 
 <h2 id="why-mcp-exists">Why MCP exists</h2>
 
-<p>The team in our story had built four integrations for one assistant. A second AI experience would need the same four integrations again. Change one backend API and both applications could break in different ways. This many-to-many integration problem is where promising AI products often become difficult to scale.</p>
+<p>Without a shared protocol, each AI application builds a custom adapter for each external system. Add a second assistant, another model provider, and three more services, and the number of integration paths grows quickly. A change to one backend can break several clients in different ways.</p>
 
 <p>Custom tool calling works for a prototype. It becomes expensive when the number of models, AI agents, applications, and business systems grows. Governance also fragments because each connector invents its own schema, permissions, errors, and prompt conventions.</p>
 
@@ -31,7 +43,7 @@ $content = <<<'HTML'
 
 <p><a href="https://www.anthropic.com/news/model-context-protocol" rel="noopener">Anthropic introduced and open-sourced Model Context Protocol in November 2024</a>. The original idea was direct: replace fragmented, one-off AI integrations with an open standard for secure connections between AI assistants and the systems where data and tools live. Claude Desktop and Claude Code helped many developers encounter MCP for the first time, establishing Anthropic MCP servers as an early reference point for the ecosystem.</p>
 
-<p>The story quickly grew beyond one company or model. In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation. The foundation brought together Anthropic, Block, and OpenAI alongside other major technology companies to support neutral, community-led infrastructure for agentic AI.</p>
+<p>The protocol quickly expanded beyond one company or model. In December 2025, Anthropic donated MCP to the Agentic AI Foundation under the Linux Foundation. The foundation brought together Anthropic, Block, and OpenAI alongside other major technology companies to support neutral, community-led infrastructure for agentic AI.</p>
 
 <p><a href="https://openai.com/index/agentic-ai-foundation/" rel="noopener">OpenAI describes itself as an early MCP adopter and core contributor</a>, using the protocol as a foundation for connectors and apps in ChatGPT. For developers, the <a href="https://openai.github.io/openai-agents-python/mcp/" rel="noopener">OpenAI Agents SDK includes MCP server integration</a> for hosted remote servers, Streamable HTTP, and local stdio connections. That means an OpenAI agent can discover and call MCP tools alongside its other capabilities.</p>
 
@@ -39,7 +51,7 @@ $content = <<<'HTML'
 
 <h2 id="mental-model">A useful mental model: host, client, server</h2>
 
-<p>Picture the team drawing three boxes on a whiteboard. Those boxes became the simplest useful mental model for MCP architecture:</p>
+<p>The architecture separates three responsibilities. Following a request through these roles is the clearest way to understand the protocol:</p>
 
 <ul>
 <li><strong>The MCP host</strong> is the AI application a person uses. It owns the conversation, orchestrates the AI agent, assembles context, and remains responsible for consent and policy.</li>
@@ -49,11 +61,11 @@ $content = <<<'HTML'
 
 [mcp_architecture]
 
-<p>The whiteboard suddenly made the architecture less mysterious. The MCP server did not need to know how the final chat, copilot, or autonomous agent experience was designed. The host no longer needed a one-off connector for every underlying system. Both sides could evolve around the same protocol contract.</p>
+<p>The MCP server does not need to know how the final chat, copilot, or autonomous agent experience is designed. The host does not need a one-off connector for every underlying system. Both sides can evolve around the same protocol contract.</p>
 
 <h2 id="primitives">Tools, resources, and prompts</h2>
 
-<p>Next, the team asked a practical question: what exactly should an MCP server expose? The protocol groups its core capabilities into three primitives. Each gives the AI application a different kind of power and assigns control differently.</p>
+<p>At the capability boundary, an MCP server exposes three core primitives. Each gives the AI application a different kind of access and assigns control differently.</p>
 
 [mcp_primitives]
 
@@ -63,27 +75,31 @@ $content = <<<'HTML'
 
 <h2 id="request-flow">How an MCP request flows</h2>
 
-<p>When the team traced its first real request, it discovered that reliable AI automation was not one magical jump from prompt to production. It was a sequence of bounded decisions.</p>
+<p>A reliable MCP interaction is a sequence of bounded protocol and application decisions. The exact lifecycle varies by protocol revision and transport, but the operational process remains consistent.</p>
 
 [mcp_flow]
 
 <ol>
-<li><strong>Discover:</strong> the client learns which capabilities the server currently exposes.</li>
-<li><strong>Understand:</strong> the host reads the capability description and input schema so the model can form a valid request.</li>
-<li><strong>Authorize:</strong> identity, scopes, organizational policy, and user consent are evaluated before sensitive work.</li>
-<li><strong>Execute:</strong> the server validates inputs and invokes the underlying API or service.</li>
-<li><strong>Observe:</strong> the system records the outcome, exposes useful errors, and creates an audit trail appropriate to the risk.</li>
+<li><strong>Connect and negotiate:</strong> the client opens a supported transport and establishes the protocol revision and capabilities used by the connection.</li>
+<li><strong>Discover:</strong> the client obtains available tools, resources, or prompts through list operations such as <code>tools/list</code>.</li>
+<li><strong>Select:</strong> the host presents relevant schemas to the model. The model proposes the capability and arguments that match the user’s intent.</li>
+<li><strong>Authorize:</strong> the host evaluates identity, scopes, organizational policy, and user consent before a sensitive operation.</li>
+<li><strong>Execute:</strong> the client sends an operation such as <code>tools/call</code>, <code>resources/read</code>, or <code>prompts/get</code>. The server validates the request before touching the underlying system.</li>
+<li><strong>Return:</strong> the server responds with typed content, structured data, metadata, or a protocol error. The host decides what enters the model context.</li>
+<li><strong>Continue and observe:</strong> the agent loop interprets the result, produces an answer or another bounded action, and records traces and audit events.</li>
 </ol>
 
 <p>Good tool descriptions became part of the security model. A vague operation such as <code>update_record</code> gave the LLM and the user too little information. A narrow MCP tool with precise inputs, consequences, and constraints was easier to approve, test, observe, and revoke.</p>
 
-<h2 id="incident-story">The moment the AI agent became useful</h2>
+<h2 id="transaction-walkthrough">One MCP transaction, told as a technical story</h2>
 
-<p>By Friday, the assistant faced the same incident question that had defeated it on Monday. This time the host connected to three focused MCP servers: one for product documentation, one for incident management, and one for task creation.</p>
+<p>Start with the user intent: “Find the current incident affecting service A and prepare a follow-up task.” The host sends the intent and the available tool definitions to the model. The model does not call the backend directly; it produces a structured proposal to use <code>search_incidents</code> with a service identifier.</p>
 
-<p>The AI agent first read an approved troubleshooting resource. It then used a search tool to find the active incident and compared the affected component with the customer’s configuration. Finally, it proposed a follow-up task. A person reviewed the action, approved it, and received a link to the new ticket.</p>
+<p>The host checks whether that tool is permitted and whether approval is required. The MCP client then serializes the call and sends it to the incident server. The server validates the JSON arguments, applies its own authorization rules, calls the incident API, and maps the response into MCP content blocks.</p>
 
-<p>The model had not suddenly become smarter. The system around it had become better designed. Context arrived when needed, tool calling followed typed contracts, and a human remained in control of the consequential step. That is the practical promise of MCP for AI agents.</p>
+<p>The host adds the structured result to the model context. The model can now summarize the incident and propose <code>create_follow_up_task</code> on a different MCP server. Because that operation changes external state, the host pauses for explicit approval. After approval, the second server executes the action and returns the new task identifier. The host presents the final result and preserves the trace.</p>
+
+<p>That sequence is the technical narrative of MCP: intent becomes a typed capability request; policy gates the side effect; the server owns backend validation; and the result returns as structured context for the next model turn.</p>
 
 <h3>Design the boundary around the job</h3>
 
@@ -113,7 +129,7 @@ $content = <<<'HTML'
 
 <h2>Where to begin</h2>
 
-<p>Start as the team in our story did: build a thin vertical slice. Connect one AI host to one narrowly scoped MCP server, keep a person in control of consequential actions, and measure whether the workflow becomes faster or more reliable. The first goal is not a universal autonomous agent platform. It is evidence that a carefully governed capability improves real work.</p>
+<p>Start with a thin vertical slice. Connect one AI host to one narrowly scoped MCP server, keep a person in control of consequential actions, and measure whether the workflow becomes faster or more reliable. The first goal is not a universal autonomous agent platform. It is evidence that a carefully governed capability improves real work.</p>
 
 <p>Once that boundary is dependable, reuse becomes the multiplier. Other compatible AI applications can discover the same capability, and the server team can improve its contract without rebuilding every client integration. That is how an MCP proof of concept grows into an AI platform strategy.</p>
 

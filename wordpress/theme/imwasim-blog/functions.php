@@ -93,6 +93,69 @@ function imwasim_archive_title(string $title): string {
 }
 add_filter('get_the_archive_title', 'imwasim_archive_title');
 
+function imwasim_mcp_whiteboard(): string {
+    ob_start(); ?>
+    <figure class="interactive-figure whiteboard-figure">
+        <div class="whiteboard-scroll" role="region" aria-label="Scrollable MCP architecture diagram" tabindex="0">
+            <svg class="mcp-whiteboard" viewBox="0 0 1200 720" role="img" aria-labelledby="mcp-whiteboard-title mcp-whiteboard-desc">
+                <title id="mcp-whiteboard-title">Model Context Protocol architecture and request process</title>
+                <desc id="mcp-whiteboard-desc">A whiteboard diagram showing a user request entering an AI host and MCP client, crossing the MCP protocol boundary to servers that expose tools, resources, and prompts, then returning a structured result through an authorized and observable process.</desc>
+                <defs>
+                    <pattern id="paper-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#d8d4ca" opacity=".62"/></pattern>
+                    <filter id="marker-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4"/></filter>
+                    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#2563eb" stroke-width="2"/></marker>
+                    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#059669" stroke-width="2"/></marker>
+                    <style>
+                        .wb-title{font:800 34px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.wb-sub{font:700 16px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.wb-label{font:800 20px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.wb-small{font:700 13px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.wb-code{font:700 12px "JetBrains Mono",monospace;fill:#334155}.wb-box{fill:#fffdf7;stroke-width:4;filter:url(#marker-rough)}.wb-line{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;filter:url(#marker-rough)}
+                    </style>
+                </defs>
+                <rect width="1200" height="720" rx="22" fill="#fffdf7"/><rect width="1200" height="720" rx="22" fill="url(#paper-dots)"/>
+                <text class="wb-title" x="48" y="58">MODEL CONTEXT PROTOCOL — THE COMPLETE PATH</text>
+                <path class="wb-line" d="M48 72 C285 64 510 78 782 69" stroke="#f59e0b" opacity=".75"/>
+                <text class="wb-sub" x="49" y="99">A standard contract between an AI application and external capabilities</text>
+
+                <g aria-label="User intent"><circle cx="88" cy="220" r="43" fill="#fef3c7" stroke="#d97706" stroke-width="4" filter="url(#marker-rough)"/><circle cx="88" cy="207" r="11" fill="none" stroke="#92400e" stroke-width="3"/><path d="M66 246c6-27 38-27 44 0" fill="none" stroke="#92400e" stroke-width="3"/><text class="wb-label" x="48" y="290">USER</text><text class="wb-small" x="31" y="314">intent + approval</text></g>
+                <path class="wb-line" d="M135 220 C165 210 180 213 207 218" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+
+                <g aria-label="MCP host"><rect class="wb-box" x="220" y="132" width="270" height="184" rx="22" stroke="#2563eb"/><text class="wb-label" x="248" y="172">AI HOST</text><text class="wb-small" x="248" y="198">Chat • IDE • Agent app</text><rect x="248" y="218" width="110" height="64" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text class="wb-small" x="268" y="246">LLM / agent</text><text class="wb-small" x="278" y="267">loop</text><rect x="373" y="218" width="92" height="64" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/><text class="wb-small" x="390" y="246">policy +</text><text class="wb-small" x="391" y="267">consent</text></g>
+
+                <path class="wb-line" d="M490 220 C515 209 530 213 552 218" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+                <g aria-label="MCP client"><rect class="wb-box" x="566" y="151" width="184" height="140" rx="22" stroke="#7c3aed"/><text class="wb-label" x="592" y="190">MCP CLIENT</text><text class="wb-small" x="592" y="218">1 connection</text><text class="wb-small" x="592" y="240">per server</text><text class="wb-code" x="592" y="267">JSON-RPC 2.0</text></g>
+
+                <path class="wb-line" d="M752 220 C785 203 805 208 837 218" stroke="#059669" marker-end="url(#arrow-green)"/>
+                <text class="wb-small" x="760" y="185">stdio or</text><text class="wb-small" x="755" y="201">Streamable HTTP</text>
+
+                <g aria-label="MCP servers"><rect class="wb-box" x="852" y="116" width="300" height="238" rx="22" stroke="#059669"/><text class="wb-label" x="880" y="156">MCP SERVER(S)</text><text class="wb-small" x="880" y="180">Adapters over real systems</text><rect x="880" y="201" width="76" height="55" rx="11" fill="#dcfce7" stroke="#059669" stroke-width="2"/><text class="wb-small" x="899" y="224">TOOLS</text><text class="wb-code" x="893" y="244">tools/call</text><rect x="966" y="201" width="82" height="55" rx="11" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text class="wb-small" x="975" y="224">RESOURCES</text><text class="wb-code" x="978" y="244">read</text><rect x="1058" y="201" width="67" height="55" rx="11" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/><text class="wb-small" x="1066" y="224">PROMPTS</text><text class="wb-code" x="1074" y="244">get</text><path class="wb-line" d="M887 295 C948 278 1054 279 1114 297" stroke="#059669"/><text class="wb-small" x="884" y="326">APIs • files • databases • SaaS</text></g>
+
+                <path class="wb-line" d="M1090 367 C1007 401 883 406 780 398 C664 389 541 391 421 401 C299 411 192 408 112 374" stroke="#059669" stroke-dasharray="10 11" marker-end="url(#arrow-green)"/>
+                <text class="wb-small" x="493" y="380">structured content blocks / errors / metadata</text>
+
+                <text class="wb-label" x="48" y="456">THE REQUEST LIFECYCLE</text>
+                <path class="wb-line" d="M48 466 C218 458 371 471 528 464" stroke="#ef4444" opacity=".72"/>
+                <g transform="translate(48 496)">
+                    <g transform="translate(0 0)"><circle cx="30" cy="30" r="27" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text class="wb-label" x="23" y="38">1</text><text class="wb-small" x="0" y="80">CONNECT</text><text class="wb-code" x="0" y="101">negotiate</text></g>
+                    <path class="wb-line" d="M70 30H142" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
+                    <g transform="translate(158 0)"><circle cx="30" cy="30" r="27" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/><text class="wb-label" x="23" y="38">2</text><text class="wb-small" x="0" y="80">DISCOVER</text><text class="wb-code" x="0" y="101">*/list</text></g>
+                    <path class="wb-line" d="M229 30H301" stroke="#7c3aed" marker-end="url(#arrow-blue)"/>
+                    <g transform="translate(317 0)"><circle cx="30" cy="30" r="27" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text class="wb-label" x="23" y="38">3</text><text class="wb-small" x="0" y="80">SELECT</text><text class="wb-code" x="0" y="101">schema match</text></g>
+                    <path class="wb-line" d="M388 30H460" stroke="#d97706" marker-end="url(#arrow-blue)"/>
+                    <g transform="translate(476 0)"><circle cx="30" cy="30" r="27" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/><text class="wb-label" x="23" y="38">4</text><text class="wb-small" x="0" y="80">AUTHORIZE</text><text class="wb-code" x="0" y="101">policy + user</text></g>
+                    <path class="wb-line" d="M547 30H619" stroke="#ef4444" marker-end="url(#arrow-green)"/>
+                    <g transform="translate(635 0)"><circle cx="30" cy="30" r="27" fill="#dcfce7" stroke="#059669" stroke-width="3"/><text class="wb-label" x="23" y="38">5</text><text class="wb-small" x="0" y="80">EXECUTE</text><text class="wb-code" x="0" y="101">call/read/get</text></g>
+                    <path class="wb-line" d="M706 30H778" stroke="#059669" marker-end="url(#arrow-green)"/>
+                    <g transform="translate(794 0)"><circle cx="30" cy="30" r="27" fill="#cffafe" stroke="#0891b2" stroke-width="3"/><text class="wb-label" x="23" y="38">6</text><text class="wb-small" x="0" y="80">RETURN</text><text class="wb-code" x="0" y="101">typed result</text></g>
+                    <path class="wb-line" d="M865 30H937" stroke="#0891b2" marker-end="url(#arrow-blue)"/>
+                    <g transform="translate(953 0)"><circle cx="30" cy="30" r="27" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3"/><text class="wb-label" x="23" y="38">7</text><text class="wb-small" x="0" y="80">OBSERVE</text><text class="wb-code" x="0" y="101">trace + audit</text></g>
+                </g>
+                <rect x="48" y="635" width="1104" height="50" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 7"/><text class="wb-small" x="72" y="666">CONTROL BOUNDARY → The host owns model context and consent. The server validates every request and protects the system behind it.</text>
+            </svg>
+        </div>
+        <figcaption>Whiteboard map: intent enters the host, capabilities cross the MCP boundary, and a governed result returns to the agent loop. Swipe horizontally on smaller screens.</figcaption>
+    </figure>
+    <?php return (string) ob_get_clean();
+}
+add_shortcode('mcp_whiteboard', 'imwasim_mcp_whiteboard');
+
 function imwasim_mcp_architecture(): string {
     ob_start(); ?>
     <figure class="interactive-figure mcp-architecture" data-interactive="architecture">
