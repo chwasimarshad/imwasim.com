@@ -46,5 +46,6 @@ Muhammad Wasim Arshad is an Engineering Manager at iCareManager. He leads four c
 ## Articles
 
 - [Model Context Protocol (MCP): The Missing Link for AI Agents](https://imwasim.com/blog/model-context-protocol-mcp-introduction/) — A visual and technical guide to MCP architecture, protocol flow, AI agents, tool calling, Anthropic, OpenAI and secure intelligent automation.
+- [Software Architecture: A Practical Guide to Scalable and Maintainable Systems](https://imwasim.com/blog/software-architecture-guide/) — A practical, visual guide to software architecture principles, quality attributes, scalable system design, architecture patterns, trade-offs, C4 diagrams and ADRs.
 
 For the most current information, use the canonical profile above.

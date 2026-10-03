@@ -22,6 +22,19 @@ function imwasim_blog_assets(): void {
 }
 add_action('wp_enqueue_scripts', 'imwasim_blog_assets');
 
+function imwasim_document_title(string $title): string {
+    if (!is_singular('post')) {
+        return $title;
+    }
+    $titles = [
+        'model-context-protocol-mcp-introduction' => 'Model Context Protocol (MCP): AI Agents Guide | Wasim Arshad',
+        'software-architecture-guide' => 'Software Architecture Guide: Scalable Systems | Wasim Arshad',
+    ];
+    $slug = get_post_field('post_name', get_queried_object_id());
+    return $titles[$slug] ?? $title;
+}
+add_filter('pre_get_document_title', 'imwasim_document_title');
+
 function imwasim_social_meta(): void {
     $is_article = is_singular('post');
     $title = $is_article ? get_the_title() : get_bloginfo('name');
@@ -53,6 +66,8 @@ function imwasim_social_meta(): void {
             'datePublished' => get_the_date(DATE_W3C),
             'dateModified' => get_the_modified_date(DATE_W3C),
             'mainEntityOfPage' => $url,
+            'articleSection' => wp_get_post_categories(get_the_ID(), ['fields' => 'names']),
+            'keywords' => wp_get_post_tags(get_the_ID(), ['fields' => 'names']),
             'author' => ['@type' => 'Person', 'name' => 'Muhammad Wasim Arshad', 'url' => 'https://imwasim.com/'],
             'publisher' => ['@type' => 'Person', 'name' => 'Muhammad Wasim Arshad', 'url' => 'https://imwasim.com/'],
             'image' => $image,
@@ -156,6 +171,81 @@ function imwasim_mcp_whiteboard(): string {
 }
 add_shortcode('mcp_whiteboard', 'imwasim_mcp_whiteboard');
 
+function imwasim_software_architecture_whiteboard(): string {
+    ob_start(); ?>
+    <figure class="interactive-figure whiteboard-figure">
+        <div class="whiteboard-scroll" role="region" aria-label="Scrollable software architecture decision map" tabindex="0">
+            <svg class="architecture-whiteboard" viewBox="0 0 1200 720" role="img" aria-labelledby="architecture-board-title architecture-board-desc">
+                <title id="architecture-board-title">Software architecture decision map</title>
+                <desc id="architecture-board-desc">A whiteboard diagram showing how business goals, users, constraints, and risks become architecture decisions about boundaries, data, communication, and deployment, which are validated against quality attributes and production feedback.</desc>
+                <defs>
+                    <pattern id="architecture-paper-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#d8d4ca" opacity=".62"/></pattern>
+                    <filter id="architecture-marker-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="11" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4"/></filter>
+                    <marker id="architecture-arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#2563eb" stroke-width="2"/></marker>
+                    <marker id="architecture-arrow-green" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#059669" stroke-width="2"/></marker>
+                    <style>
+                        .ab-title{font:800 34px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.ab-sub{font:700 16px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.ab-label{font:800 20px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.ab-small{font:700 13px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.ab-code{font:700 12px "JetBrains Mono",monospace;fill:#334155}.ab-box{fill:#fffdf7;stroke-width:4;filter:url(#architecture-marker-rough)}.ab-line{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;filter:url(#architecture-marker-rough)}
+                    </style>
+                </defs>
+                <rect width="1200" height="720" rx="22" fill="#fffdf7"/><rect width="1200" height="720" rx="22" fill="url(#architecture-paper-dots)"/>
+                <text class="ab-title" x="48" y="58">SOFTWARE ARCHITECTURE — FROM NEED TO OPERATING SYSTEM</text>
+                <path class="ab-line" d="M48 72 C310 63 563 79 875 69" stroke="#f59e0b" opacity=".75"/>
+                <text class="ab-sub" x="49" y="99">Architecture is the set of consequential decisions that shape change, scale, and risk.</text>
+
+                <g aria-label="Architecture inputs"><rect class="ab-box" x="48" y="140" width="250" height="250" rx="22" stroke="#d97706"/><text class="ab-label" x="76" y="181">1 / DRIVERS</text><text class="ab-small" x="76" y="216">BUSINESS</text><text class="ab-code" x="76" y="238">outcomes • cost • time</text><text class="ab-small" x="76" y="276">USERS + WORKLOAD</text><text class="ab-code" x="76" y="298">traffic • latency • data</text><text class="ab-small" x="76" y="336">CONSTRAINTS + RISKS</text><text class="ab-code" x="76" y="358">skills • law • legacy</text></g>
+                <path class="ab-line" d="M300 260 C340 244 365 247 399 257" stroke="#2563eb" marker-end="url(#architecture-arrow-blue)"/>
+
+                <g aria-label="Architecture decisions"><rect class="ab-box" x="414" y="126" width="366" height="278" rx="24" stroke="#2563eb"/><text class="ab-label" x="444" y="167">2 / STRUCTURAL DECISIONS</text><rect x="444" y="194" width="140" height="70" rx="13" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text class="ab-small" x="469" y="224">BOUNDARIES</text><text class="ab-code" x="465" y="246">modules • services</text><rect x="610" y="194" width="140" height="70" rx="13" fill="#dcfce7" stroke="#059669" stroke-width="2"/><text class="ab-small" x="648" y="224">DATA</text><text class="ab-code" x="631" y="246">ownership • model</text><rect x="444" y="288" width="140" height="70" rx="13" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/><text class="ab-small" x="466" y="318">INTERACTION</text><text class="ab-code" x="458" y="340">sync • async • API</text><rect x="610" y="288" width="140" height="70" rx="13" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/><text class="ab-small" x="632" y="318">DEPLOYMENT</text><text class="ab-code" x="634" y="340">runtime • topology</text></g>
+                <path class="ab-line" d="M782 260 C818 244 842 247 876 257" stroke="#059669" marker-end="url(#architecture-arrow-green)"/>
+
+                <g aria-label="Quality attributes"><rect class="ab-box" x="892" y="140" width="260" height="250" rx="22" stroke="#059669"/><text class="ab-label" x="920" y="181">3 / FITNESS</text><text class="ab-small" x="920" y="216">RELIABILITY</text><text class="ab-code" x="1022" y="216">SLO • recovery</text><text class="ab-small" x="920" y="251">SECURITY</text><text class="ab-code" x="1010" y="251">identity • data</text><text class="ab-small" x="920" y="286">PERFORMANCE</text><text class="ab-code" x="1022" y="286">p95 • capacity</text><text class="ab-small" x="920" y="321">CHANGEABILITY</text><text class="ab-code" x="1034" y="321">lead time</text><text class="ab-small" x="920" y="356">COST</text><text class="ab-code" x="975" y="356">build + operate</text></g>
+
+                <path class="ab-line" d="M1020 409 C1025 444 995 455 958 461 C769 491 410 480 222 456 C173 450 143 432 150 405" stroke="#ef4444" stroke-dasharray="10 11" marker-end="url(#architecture-arrow-blue)"/>
+                <text class="ab-small" x="462" y="448">evidence changes the design</text>
+
+                <text class="ab-label" x="48" y="505">THE ARCHITECTURE LOOP</text>
+                <path class="ab-line" d="M48 515 C231 507 390 520 563 513" stroke="#ef4444" opacity=".72"/>
+                <g transform="translate(48 548)">
+                    <g><circle cx="30" cy="30" r="27" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text class="ab-label" x="23" y="38">1</text><text class="ab-small" x="0" y="80">UNDERSTAND</text><text class="ab-code" x="0" y="101">context</text></g><path class="ab-line" d="M72 30H146" stroke="#d97706" marker-end="url(#architecture-arrow-blue)"/>
+                    <g transform="translate(162)"><circle cx="30" cy="30" r="27" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text class="ab-label" x="23" y="38">2</text><text class="ab-small" x="0" y="80">PRIORITIZE</text><text class="ab-code" x="0" y="101">quality goals</text></g><path class="ab-line" d="M234 30H308" stroke="#2563eb" marker-end="url(#architecture-arrow-blue)"/>
+                    <g transform="translate(324)"><circle cx="30" cy="30" r="27" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/><text class="ab-label" x="23" y="38">3</text><text class="ab-small" x="5" y="80">DESIGN</text><text class="ab-code" x="0" y="101">options</text></g><path class="ab-line" d="M396 30H470" stroke="#7c3aed" marker-end="url(#architecture-arrow-green)"/>
+                    <g transform="translate(486)"><circle cx="30" cy="30" r="27" fill="#dcfce7" stroke="#059669" stroke-width="3"/><text class="ab-label" x="23" y="38">4</text><text class="ab-small" x="0" y="80">VALIDATE</text><text class="ab-code" x="0" y="101">prototype • test</text></g><path class="ab-line" d="M558 30H632" stroke="#059669" marker-end="url(#architecture-arrow-green)"/>
+                    <g transform="translate(648)"><circle cx="30" cy="30" r="27" fill="#cffafe" stroke="#0891b2" stroke-width="3"/><text class="ab-label" x="23" y="38">5</text><text class="ab-small" x="0" y="80">DOCUMENT</text><text class="ab-code" x="0" y="101">ADR + diagrams</text></g><path class="ab-line" d="M720 30H794" stroke="#0891b2" marker-end="url(#architecture-arrow-blue)"/>
+                    <g transform="translate(810)"><circle cx="30" cy="30" r="27" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/><text class="ab-label" x="23" y="38">6</text><text class="ab-small" x="0" y="80">OBSERVE</text><text class="ab-code" x="0" y="101">measure • evolve</text></g>
+                </g>
+                <rect x="48" y="672" width="1104" height="30" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 7"/><text class="ab-code" x="72" y="692">GOOD ARCHITECTURE = explicit trade-offs + enforceable boundaries + production evidence</text>
+            </svg>
+        </div>
+        <figcaption>Whiteboard map: architecture turns business drivers into structural decisions, tests them against measurable quality attributes, and evolves through production feedback.</figcaption>
+    </figure>
+    <?php return (string) ob_get_clean();
+}
+add_shortcode('software_architecture_whiteboard', 'imwasim_software_architecture_whiteboard');
+
+function imwasim_architecture_tradeoff_map(): string {
+    ob_start(); ?>
+    <figure class="interactive-figure whiteboard-figure">
+        <div class="whiteboard-scroll" role="region" aria-label="Scrollable software architecture pattern trade-off map" tabindex="0">
+            <svg class="architecture-whiteboard architecture-pattern-map" viewBox="0 0 1200 590" role="img" aria-labelledby="pattern-map-title pattern-map-desc">
+                <title id="pattern-map-title">Software architecture pattern trade-off map</title>
+                <desc id="pattern-map-desc">A comparison of layered architecture, modular monoliths, microservices, event-driven architecture, and clean or hexagonal architecture, showing their strongest use cases and primary costs.</desc>
+                <defs><pattern id="pattern-paper-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#d8d4ca" opacity=".62"/></pattern><filter id="pattern-marker-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="19" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2"/></filter><style>.pm-title{font:800 32px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.pm-label{font:800 19px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.pm-small{font:700 13px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.pm-code{font:700 12px "JetBrains Mono",monospace;fill:#334155}.pm-box{fill:#fffdf7;stroke-width:4;filter:url(#pattern-marker-rough)}</style></defs>
+                <rect width="1200" height="590" rx="22" fill="#fffdf7"/><rect width="1200" height="590" rx="22" fill="url(#pattern-paper-dots)"/>
+                <text class="pm-title" x="48" y="58">CHOOSE A PATTERN BY THE FORCE IT MUST HANDLE</text><text class="pm-small" x="49" y="88">Patterns are constraints with benefits and costs — they are not maturity levels.</text>
+                <g transform="translate(48 125)"><rect class="pm-box" width="200" height="320" rx="20" stroke="#2563eb"/><text class="pm-label" x="20" y="42">LAYERED</text><text class="pm-small" x="20" y="76">BEST WHEN</text><text class="pm-code" x="20" y="101">familiar domain</text><text class="pm-code" x="20" y="123">stable workflow</text><text class="pm-small" x="20" y="166">OPTIMIZES</text><text class="pm-code" x="20" y="191">simplicity</text><text class="pm-code" x="20" y="213">clear tiers</text><text class="pm-small" x="20" y="256">WATCH</text><text class="pm-code" x="20" y="281">cross-layer change</text></g>
+                <g transform="translate(274 125)"><rect class="pm-box" width="200" height="320" rx="20" stroke="#059669"/><text class="pm-label" x="20" y="42">MODULAR</text><text class="pm-label" x="20" y="66">MONOLITH</text><text class="pm-small" x="20" y="101">BEST WHEN</text><text class="pm-code" x="20" y="126">one deployment</text><text class="pm-code" x="20" y="148">strong modules</text><text class="pm-small" x="20" y="191">OPTIMIZES</text><text class="pm-code" x="20" y="216">delivery speed</text><text class="pm-code" x="20" y="238">low operations</text><text class="pm-small" x="20" y="281">WATCH</text><text class="pm-code" x="20" y="306">boundary erosion</text></g>
+                <g transform="translate(500 125)"><rect class="pm-box" width="200" height="320" rx="20" stroke="#7c3aed"/><text class="pm-label" x="20" y="42">MICROSERVICES</text><text class="pm-small" x="20" y="76">BEST WHEN</text><text class="pm-code" x="20" y="101">independent scale</text><text class="pm-code" x="20" y="123">team autonomy</text><text class="pm-small" x="20" y="166">OPTIMIZES</text><text class="pm-code" x="20" y="191">deploy isolation</text><text class="pm-code" x="20" y="213">fault boundaries</text><text class="pm-small" x="20" y="256">WATCH</text><text class="pm-code" x="20" y="281">distributed cost</text></g>
+                <g transform="translate(726 125)"><rect class="pm-box" width="200" height="320" rx="20" stroke="#d97706"/><text class="pm-label" x="20" y="42">EVENT-DRIVEN</text><text class="pm-small" x="20" y="76">BEST WHEN</text><text class="pm-code" x="20" y="101">async reactions</text><text class="pm-code" x="20" y="123">many consumers</text><text class="pm-small" x="20" y="166">OPTIMIZES</text><text class="pm-code" x="20" y="191">decoupling</text><text class="pm-code" x="20" y="213">burst handling</text><text class="pm-small" x="20" y="256">WATCH</text><text class="pm-code" x="20" y="281">ordering • replay</text></g>
+                <g transform="translate(952 125)"><rect class="pm-box" width="200" height="320" rx="20" stroke="#ef4444"/><text class="pm-label" x="20" y="42">CLEAN /</text><text class="pm-label" x="20" y="66">HEXAGONAL</text><text class="pm-small" x="20" y="101">BEST WHEN</text><text class="pm-code" x="20" y="126">rich domain logic</text><text class="pm-code" x="20" y="148">replaceable edges</text><text class="pm-small" x="20" y="191">OPTIMIZES</text><text class="pm-code" x="20" y="216">testability</text><text class="pm-code" x="20" y="238">technology change</text><text class="pm-small" x="20" y="281">WATCH</text><text class="pm-code" x="20" y="306">extra abstraction</text></g>
+                <path d="M64 493 C326 478 679 506 1136 488" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-dasharray="11 10"/><text class="pm-label" x="48" y="540">DECISION RULE:</text><text class="pm-code" x="215" y="540">choose the simplest structure that protects today’s critical quality attributes and leaves a credible path to evolve.</text>
+            </svg>
+        </div>
+        <figcaption>Pattern map: select architecture by workload forces and trade-offs. A more distributed pattern is useful only when its benefits exceed its operational cost.</figcaption>
+    </figure>
+    <?php return (string) ob_get_clean();
+}
+add_shortcode('architecture_tradeoff_map', 'imwasim_architecture_tradeoff_map');
+
 function imwasim_mcp_architecture(): string {
     ob_start(); ?>
     <figure class="interactive-figure mcp-architecture" data-interactive="architecture">
@@ -218,18 +308,32 @@ function imwasim_mcp_flow(): string {
 add_shortcode('mcp_flow', 'imwasim_mcp_flow');
 
 function imwasim_faq_schema(): void {
-    if (!is_single('model-context-protocol-mcp-introduction')) {
+    if (!is_singular('post')) {
         return;
     }
-    $schema = [
-        '@context' => 'https://schema.org',
-        '@type' => 'FAQPage',
-        'mainEntity' => [
+    $faq_by_slug = [
+        'model-context-protocol-mcp-introduction' => [
             ['@type' => 'Question', 'name' => 'What is Model Context Protocol?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Model Context Protocol is an open standard for connecting AI applications to external tools, data, and reusable prompts through a consistent interface.']],
             ['@type' => 'Question', 'name' => 'Does MCP replace APIs?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'No. MCP commonly sits above existing APIs and data systems, giving AI applications a standard way to discover and use their capabilities.']],
             ['@type' => 'Question', 'name' => 'What is the difference between MCP and RAG?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'RAG retrieves relevant information for a model context. MCP is a broader interoperability protocol that can expose resources, prompts, and callable tools. A system can use both together.']],
             ['@type' => 'Question', 'name' => 'Who created MCP, and does OpenAI support it?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'MCP was created and open-sourced by Anthropic in 2024. OpenAI is an early adopter and core contributor and supports MCP through ChatGPT integrations and the OpenAI Agents SDK.']],
         ],
+        'software-architecture-guide' => [
+            ['@type' => 'Question', 'name' => 'What is software architecture?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Software architecture is the set of structural decisions that defines a system’s major components, their responsibilities and interactions, data ownership, deployment model, and measurable quality attributes.']],
+            ['@type' => 'Question', 'name' => 'What makes software architecture scalable?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Scalable architecture measures workload demand, removes shared bottlenecks, partitions state deliberately, uses caching and asynchronous work where appropriate, and scales only the components that need additional capacity.']],
+            ['@type' => 'Question', 'name' => 'Should a new system start with microservices?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Usually only when independent deployment, scaling, fault isolation, or team autonomy justify the operational cost. A modular monolith is often a safer starting point when the domain and service boundaries are still evolving.']],
+            ['@type' => 'Question', 'name' => 'What is an Architecture Decision Record?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'An Architecture Decision Record, or ADR, is a short document that records a consequential decision, its context, considered options, outcome, trade-offs, and consequences.']],
+            ['@type' => 'Question', 'name' => 'How often should software architecture be reviewed?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Review architecture when business goals, workload assumptions, risks, team boundaries, or production evidence change, and at planned checkpoints for critical quality attributes.']],
+        ],
+    ];
+    $slug = get_post_field('post_name', get_queried_object_id());
+    if (!isset($faq_by_slug[$slug])) {
+        return;
+    }
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'FAQPage',
+        'mainEntity' => $faq_by_slug[$slug],
     ];
     echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES) . '</script>' . "\n";
 }

@@ -15,11 +15,14 @@ THEME = REPO / "wordpress" / "theme" / "imwasim-blog"
 OUTPUT = REPO / "blog"
 LOCAL_BASE = "http://127.0.0.1:8080/blog/"
 PRODUCTION_BASE = "https://imwasim.com/blog/"
-ARTICLE_SLUG = "model-context-protocol-mcp-introduction"
+ARTICLE_SLUGS = (
+    "model-context-protocol-mcp-introduction",
+    "software-architecture-guide",
+)
 
 PAGES = {
     "": OUTPUT / "index.html",
-    f"{ARTICLE_SLUG}/": OUTPUT / ARTICLE_SLUG / "index.html",
+    **{f"{slug}/": OUTPUT / slug / "index.html" for slug in ARTICLE_SLUGS},
 }
 
 GOOGLE_TAG = """<!-- Google tag (gtag.js) -->
@@ -143,6 +146,7 @@ def write_support_files() -> None:
 ## Articles
 
 - [Model Context Protocol (MCP): The Missing Link for AI Agents](https://imwasim.com/blog/model-context-protocol-mcp-introduction/): A visual and technical guide to MCP architecture, protocol flow, AI agents, tool calling, context engineering, Anthropic, OpenAI, and secure AI automation.
+- [Software Architecture: A Practical Guide to Scalable and Maintainable Systems](https://imwasim.com/blog/software-architecture-guide/): A practical, visual guide to software architecture principles, quality attributes, scalable system design, architecture patterns, trade-offs, C4 diagrams, and ADRs.
 """,
         encoding="utf-8",
     )

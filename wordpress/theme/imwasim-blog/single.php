@@ -13,6 +13,9 @@
             <?php if (is_single('model-context-protocol-mcp-introduction')) : ?>
             <?php echo do_shortcode('[mcp_whiteboard]'); ?>
             <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#technical-definition">Technical definition</a></li><li><a href="#why-mcp-exists">Why MCP exists</a></li><li><a href="#anthropic-openai">Anthropic and OpenAI</a></li><li><a href="#mental-model">Host, client, server</a></li><li><a href="#primitives">Core primitives</a></li><li><a href="#request-flow">Protocol process</a></li><li><a href="#transaction-walkthrough">Transaction walkthrough</a></li><li><a href="#adoption">Adoption checklist</a></li></ol></nav>
+            <?php elseif (is_single('software-architecture-guide')) : ?>
+            <?php echo do_shortcode('[software_architecture_whiteboard]'); ?>
+            <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#definition">Technical definition</a></li><li><a href="#quality-attributes">Quality attributes</a></li><li><a href="#principles">Architecture principles</a></li><li><a href="#patterns">Pattern comparison</a></li><li><a href="#design-process">Design process</a></li><li><a href="#scalability">Scalability</a></li><li><a href="#documentation">ADRs and diagrams</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></nav>
             <?php endif; ?>
             <div class="article-content"><?php the_content(); ?></div>
         </div>
