@@ -29,6 +29,7 @@ function imwasim_document_title(string $title): string {
     $titles = [
         'model-context-protocol-mcp-introduction' => 'Model Context Protocol (MCP): AI Agents Guide | Wasim Arshad',
         'software-architecture-guide' => 'Software Architecture Guide: Scalable Systems | Wasim Arshad',
+        'ai-impact-on-software-development' => 'AI Impact on Software Development: 2026 Guide | Wasim Arshad',
     ];
     $slug = get_post_field('post_name', get_queried_object_id());
     return $titles[$slug] ?? $title;
@@ -222,6 +223,91 @@ function imwasim_software_architecture_whiteboard(): string {
 }
 add_shortcode('software_architecture_whiteboard', 'imwasim_software_architecture_whiteboard');
 
+function imwasim_ai_development_whiteboard(): string {
+    ob_start(); ?>
+    <figure class="interactive-figure whiteboard-figure">
+        <div class="whiteboard-scroll" role="region" aria-label="Scrollable diagram of AI impact across the software development lifecycle" tabindex="0">
+            <svg class="architecture-whiteboard" viewBox="0 0 1200 700" role="img" aria-labelledby="ai-sdlc-title ai-sdlc-desc">
+                <title id="ai-sdlc-title">AI impact across the software development lifecycle</title>
+                <desc id="ai-sdlc-desc">A whiteboard diagram showing AI assistance across discovery, architecture, coding, testing, review, delivery, and operations, with engineering context entering every stage and human accountability governing the complete lifecycle.</desc>
+                <defs>
+                    <pattern id="ai-paper-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#d8d4ca" opacity=".62"/></pattern>
+                    <filter id="ai-marker-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="29" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4"/></filter>
+                    <marker id="ai-arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#2563eb" stroke-width="2"/></marker>
+                    <marker id="ai-arrow-green" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#059669" stroke-width="2"/></marker>
+                    <style>.ai-title{font:800 34px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.ai-sub{font:700 16px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.ai-label{font:800 18px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.ai-small{font:700 13px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.ai-code{font:700 12px "JetBrains Mono",monospace;fill:#334155}.ai-box{fill:#fffdf7;stroke-width:4;filter:url(#ai-marker-rough)}.ai-line{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;filter:url(#ai-marker-rough)}</style>
+                </defs>
+                <rect width="1200" height="700" rx="22" fill="#fffdf7"/><rect width="1200" height="700" rx="22" fill="url(#ai-paper-dots)"/>
+                <text class="ai-title" x="48" y="58">AI IS CHANGING THE WHOLE SOFTWARE DELIVERY LOOP</text>
+                <path class="ai-line" d="M48 72 C292 63 530 79 833 69" stroke="#f59e0b" opacity=".75"/>
+                <text class="ai-sub" x="49" y="99">Speed comes from assistance. Value comes from context, verification, and flow.</text>
+
+                <g aria-label="Engineering context"><rect class="ai-box" x="48" y="142" width="212" height="250" rx="22" stroke="#d97706"/><text class="ai-label" x="75" y="181">CONTEXT IN</text><text class="ai-small" x="75" y="218">PRODUCT INTENT</text><text class="ai-code" x="75" y="240">users • outcomes</text><text class="ai-small" x="75" y="278">SYSTEM CONTEXT</text><text class="ai-code" x="75" y="300">code • APIs • data</text><text class="ai-small" x="75" y="338">ENGINEERING RULES</text><text class="ai-code" x="75" y="360">security • quality</text></g>
+                <path class="ai-line" d="M262 268 C296 251 318 254 347 266" stroke="#2563eb" marker-end="url(#ai-arrow-blue)"/>
+
+                <g aria-label="AI assisted software development lifecycle"><rect class="ai-box" x="362" y="125" width="790" height="302" rx="24" stroke="#2563eb"/><text class="ai-label" x="392" y="164">AI-ASSISTED SDLC</text>
+                    <g transform="translate(392 194)"><rect width="112" height="88" rx="15" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text class="ai-label" x="17" y="35">DISCOVER</text><text class="ai-code" x="17" y="59">summarize</text><text class="ai-code" x="17" y="76">clarify</text></g>
+                    <path class="ai-line" d="M512 238H544" stroke="#2563eb" marker-end="url(#ai-arrow-blue)"/>
+                    <g transform="translate(558 194)"><rect width="112" height="88" rx="15" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/><text class="ai-label" x="22" y="35">DESIGN</text><text class="ai-code" x="17" y="59">options</text><text class="ai-code" x="17" y="76">trade-offs</text></g>
+                    <path class="ai-line" d="M678 238H710" stroke="#7c3aed" marker-end="url(#ai-arrow-blue)"/>
+                    <g transform="translate(724 194)"><rect width="112" height="88" rx="15" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text class="ai-label" x="27" y="35">BUILD</text><text class="ai-code" x="17" y="59">generate</text><text class="ai-code" x="17" y="76">refactor</text></g>
+                    <path class="ai-line" d="M844 238H876" stroke="#2563eb" marker-end="url(#ai-arrow-green)"/>
+                    <g transform="translate(890 194)"><rect width="112" height="88" rx="15" fill="#dcfce7" stroke="#059669" stroke-width="3"/><text class="ai-label" x="29" y="35">TEST</text><text class="ai-code" x="17" y="59">cases</text><text class="ai-code" x="17" y="76">edge paths</text></g>
+                    <path class="ai-line" d="M1010 238H1042" stroke="#059669" marker-end="url(#ai-arrow-green)"/>
+                    <g transform="translate(1056 194)"><rect width="70" height="88" rx="15" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/><text class="ai-label" x="10" y="35">SHIP</text><text class="ai-code" x="10" y="59">CI/CD</text><text class="ai-code" x="10" y="76">guard</text></g>
+                    <path class="ai-line" d="M1090 303 C1050 363 930 376 761 376 C582 376 469 359 430 304" stroke="#059669" stroke-dasharray="10 11" marker-end="url(#ai-arrow-green)"/>
+                    <text class="ai-small" x="612" y="346">operate • observe • learn • update context</text>
+                    <rect x="392" y="382" width="734" height="26" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 6"/><text class="ai-code" x="412" y="400">AI proposes and executes bounded work. Engineers own the result.</text>
+                </g>
+
+                <text class="ai-label" x="48" y="486">WHAT CHANGES</text><path class="ai-line" d="M48 497 C160 487 266 504 376 495" stroke="#ef4444" opacity=".72"/>
+                <g transform="translate(48 528)"><rect width="248" height="108" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text class="ai-label" x="22" y="36">FROM TYPING TO INTENT</text><text class="ai-code" x="22" y="64">less boilerplate</text><text class="ai-code" x="22" y="84">more specification</text></g>
+                <g transform="translate(330 528)"><rect width="248" height="108" rx="18" fill="#dcfce7" stroke="#059669" stroke-width="3"/><text class="ai-label" x="22" y="36">FROM OUTPUT TO FLOW</text><text class="ai-code" x="22" y="64">optimize delivery</text><text class="ai-code" x="22" y="84">not code volume</text></g>
+                <g transform="translate(612 528)"><rect width="248" height="108" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text class="ai-label" x="22" y="36">FROM REVIEW TO PROOF</text><text class="ai-code" x="22" y="64">tests • scans • evals</text><text class="ai-code" x="22" y="84">human judgment</text></g>
+                <g transform="translate(894 528)"><rect width="258" height="108" rx="18" fill="#f3e8ff" stroke="#7c3aed" stroke-width="3"/><text class="ai-label" x="22" y="36">FROM TASKS TO SYSTEMS</text><text class="ai-code" x="22" y="64">agents need boundaries</text><text class="ai-code" x="22" y="84">platforms + policy</text></g>
+                <text class="ai-small" x="48" y="674">THE PRACTICAL OUTCOME → faster feedback when trusted engineering practices surround the model.</text>
+            </svg>
+        </div>
+        <figcaption>Whiteboard map: AI assists every software-development stage, while product context, automated verification, and human accountability determine the quality of the outcome.</figcaption>
+    </figure>
+    <?php return (string) ob_get_clean();
+}
+add_shortcode('ai_development_whiteboard', 'imwasim_ai_development_whiteboard');
+
+function imwasim_related_articles(int $post_id): string {
+    $related = new WP_Query([
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => 3,
+        'post__not_in' => [$post_id],
+        'orderby' => 'date',
+        'order' => 'DESC',
+        'no_found_rows' => true,
+    ]);
+    if (!$related->have_posts()) {
+        return '';
+    }
+    ob_start(); ?>
+    <aside class="related-articles" aria-labelledby="related-articles-title">
+        <div class="container">
+            <div class="section-heading"><div><p class="eyebrow">// Keep exploring</p><h2 id="related-articles-title">Related articles</h2></div><p>More practical architecture and AI guidance.</p></div>
+            <div class="related-grid">
+                <?php while ($related->have_posts()) : $related->the_post(); ?>
+                <article class="related-card">
+                    <p class="related-card__meta"><?php echo esc_html(get_the_category()[0]->name ?? 'Perspective'); ?> · <?php echo esc_html(imwasim_reading_time()); ?></p>
+                    <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                    <p><?php echo esc_html(get_the_excerpt()); ?></p>
+                    <a class="related-card__link" href="<?php the_permalink(); ?>" aria-label="Read <?php echo esc_attr(get_the_title()); ?>">Read article <span aria-hidden="true">↗</span></a>
+                </article>
+                <?php endwhile; ?>
+            </div>
+        </div>
+    </aside>
+    <?php
+    wp_reset_postdata();
+    return (string) ob_get_clean();
+}
+
 function imwasim_architecture_tradeoff_map(): string {
     ob_start(); ?>
     <figure class="interactive-figure whiteboard-figure">
@@ -324,6 +410,12 @@ function imwasim_faq_schema(): void {
             ['@type' => 'Question', 'name' => 'Should a new system start with microservices?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Usually only when independent deployment, scaling, fault isolation, or team autonomy justify the operational cost. A modular monolith is often a safer starting point when the domain and service boundaries are still evolving.']],
             ['@type' => 'Question', 'name' => 'What is an Architecture Decision Record?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'An Architecture Decision Record, or ADR, is a short document that records a consequential decision, its context, considered options, outcome, trade-offs, and consequences.']],
             ['@type' => 'Question', 'name' => 'How often should software architecture be reviewed?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Review architecture when business goals, workload assumptions, risks, team boundaries, or production evidence change, and at planned checkpoints for critical quality attributes.']],
+        ],
+        'ai-impact-on-software-development' => [
+            ['@type' => 'Question', 'name' => 'How is AI changing software development?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'AI is shifting software development from manual code production toward intent definition, contextual generation, automated analysis, and faster feedback across requirements, design, coding, testing, review, delivery, and operations.']],
+            ['@type' => 'Question', 'name' => 'Will AI replace software developers?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'AI will automate parts of software work, but developers remain responsible for product intent, architecture, security, validation, trade-offs, and production outcomes. The role is changing toward engineering judgment and system stewardship.']],
+            ['@type' => 'Question', 'name' => 'Does AI improve developer productivity?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'AI can reduce time spent on search, boilerplate, tests, documentation, and routine changes, but organization-level gains depend on code quality, review capacity, platform engineering, workflow design, and trusted delivery practices.']],
+            ['@type' => 'Question', 'name' => 'What are the risks of AI-generated code?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Risks include incorrect behavior, insecure dependencies, fabricated APIs, weak edge-case handling, license or provenance concerns, sensitive-data exposure, and code that passes superficial review without fitting the system architecture.']],
         ],
     ];
     $slug = get_post_field('post_name', get_queried_object_id());

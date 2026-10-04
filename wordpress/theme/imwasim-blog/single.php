@@ -16,9 +16,13 @@
             <?php elseif (is_single('software-architecture-guide')) : ?>
             <?php echo do_shortcode('[software_architecture_whiteboard]'); ?>
             <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#definition">Technical definition</a></li><li><a href="#quality-attributes">Quality attributes</a></li><li><a href="#principles">Architecture principles</a></li><li><a href="#patterns">Pattern comparison</a></li><li><a href="#design-process">Design process</a></li><li><a href="#scalability">Scalability</a></li><li><a href="#documentation">ADRs and diagrams</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></nav>
+            <?php elseif (is_single('ai-impact-on-software-development')) : ?>
+            <?php echo do_shortcode('[ai_development_whiteboard]'); ?>
+            <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#direct-impact">Direct impact</a></li><li><a href="#lifecycle">AI across the SDLC</a></li><li><a href="#developer-role">Changing developer role</a></li><li><a href="#productivity">Productivity and delivery</a></li><li><a href="#risks">Risks and controls</a></li><li><a href="#adoption">Adoption playbook</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></nav>
             <?php endif; ?>
             <div class="article-content"><?php the_content(); ?></div>
         </div>
+        <?php echo imwasim_related_articles(get_the_ID()); ?>
     </article>
 <?php endwhile; ?>
 </main>

@@ -18,6 +18,7 @@ PRODUCTION_BASE = "https://imwasim.com/blog/"
 ARTICLE_SLUGS = (
     "model-context-protocol-mcp-introduction",
     "software-architecture-guide",
+    "ai-impact-on-software-development",
 )
 
 PAGES = {
@@ -147,6 +148,7 @@ def write_support_files() -> None:
 
 - [Model Context Protocol (MCP): The Missing Link for AI Agents](https://imwasim.com/blog/model-context-protocol-mcp-introduction/): A visual and technical guide to MCP architecture, protocol flow, AI agents, tool calling, context engineering, Anthropic, OpenAI, and secure AI automation.
 - [Software Architecture: A Practical Guide to Scalable and Maintainable Systems](https://imwasim.com/blog/software-architecture-guide/): A practical, visual guide to software architecture principles, quality attributes, scalable system design, architecture patterns, trade-offs, C4 diagrams, and ADRs.
+- [AI Impact on Software Development: How Engineering Is Changing](https://imwasim.com/blog/ai-impact-on-software-development/): An original, visual guide to AI-assisted software development, developer productivity, coding, testing, architecture, DevOps, engineering skills, risk, and software quality.
 """,
         encoding="utf-8",
     )
