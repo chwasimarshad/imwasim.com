@@ -11,13 +11,22 @@
         </div></header>
         <div class="article-body">
             <?php if (is_single('model-context-protocol-mcp-introduction')) : ?>
-            <?php echo do_shortcode('[mcp_whiteboard]'); ?>
+            <figure class="article-lead-media">
+                <img src="/img/blog/mcp-architecture-editorial.webp" width="1600" height="900" alt="AI application connecting securely to code, data, business systems, and cloud services through a protocol gateway" decoding="async" fetchpriority="high">
+                <figcaption>A practical view of MCP as a governed connection between an AI host and the systems it needs to use.</figcaption>
+            </figure>
             <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#technical-definition">Technical definition</a></li><li><a href="#why-mcp-exists">Why MCP exists</a></li><li><a href="#anthropic-openai">Anthropic and OpenAI</a></li><li><a href="#mental-model">Host, client, server</a></li><li><a href="#primitives">Core primitives</a></li><li><a href="#request-flow">Protocol process</a></li><li><a href="#transaction-walkthrough">Transaction walkthrough</a></li><li><a href="#adoption">Adoption checklist</a></li></ol></nav>
             <?php elseif (is_single('software-architecture-guide')) : ?>
-            <?php echo do_shortcode('[software_architecture_whiteboard]'); ?>
+            <figure class="article-lead-media">
+                <img src="/img/blog/software-architecture-editorial.webp" width="1600" height="900" alt="Layered software architecture connecting applications, modular services, data stores, observability, and cloud infrastructure" decoding="async" fetchpriority="high">
+                <figcaption>Architecture makes boundaries, dependencies, data ownership, and operational feedback visible.</figcaption>
+            </figure>
             <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#definition">Technical definition</a></li><li><a href="#quality-attributes">Quality attributes</a></li><li><a href="#principles">Architecture principles</a></li><li><a href="#patterns">Pattern comparison</a></li><li><a href="#design-process">Design process</a></li><li><a href="#scalability">Scalability</a></li><li><a href="#documentation">ADRs and diagrams</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></nav>
             <?php elseif (is_single('ai-impact-on-software-development')) : ?>
-            <?php echo do_shortcode('[ai_development_whiteboard]'); ?>
+            <figure class="article-lead-media">
+                <img src="/img/blog/ai-software-development-editorial.webp" width="1600" height="900" alt="Software engineer directing AI assistance across planning, architecture, coding, testing, deployment, and operations" decoding="async" fetchpriority="high">
+                <figcaption>AI can accelerate the delivery loop, while engineers remain responsible for judgment and production outcomes.</figcaption>
+            </figure>
             <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#direct-impact">Direct impact</a></li><li><a href="#lifecycle">AI across the SDLC</a></li><li><a href="#developer-role">Changing developer role</a></li><li><a href="#productivity">Productivity and delivery</a></li><li><a href="#risks">Risks and controls</a></li><li><a href="#adoption">Adoption playbook</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></nav>
             <?php endif; ?>
             <div class="article-content"><?php the_content(); ?></div>

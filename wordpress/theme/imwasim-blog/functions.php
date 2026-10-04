@@ -43,7 +43,14 @@ function imwasim_social_meta(): void {
         ? (get_the_excerpt() ?: wp_trim_words(wp_strip_all_tags(get_the_content()), 30))
         : get_bloginfo('description');
     $url = $is_article ? get_permalink() : home_url('/');
-    $image = 'https://imwasim.com/img/muhammad-wasim-arshad-720.webp';
+    $article_images = [
+        'model-context-protocol-mcp-introduction' => 'https://imwasim.com/img/blog/mcp-architecture-editorial.webp',
+        'software-architecture-guide' => 'https://imwasim.com/img/blog/software-architecture-editorial.webp',
+        'ai-impact-on-software-development' => 'https://imwasim.com/img/blog/ai-software-development-editorial.webp',
+    ];
+    $slug = $is_article ? get_post_field('post_name', get_queried_object_id()) : '';
+    $image = $article_images[$slug] ?? 'https://imwasim.com/img/muhammad-wasim-arshad-720.webp';
+    $image_alt = $is_article ? $title : 'Muhammad Wasim Arshad, AI Solution Architect and Engineering Leader';
     ?>
     <meta name="description" content="<?php echo esc_attr($description); ?>">
     <meta property="og:type" content="<?php echo $is_article ? 'article' : 'website'; ?>">
@@ -52,7 +59,7 @@ function imwasim_social_meta(): void {
     <meta property="og:url" content="<?php echo esc_url($url); ?>">
     <meta property="og:site_name" content="Wasim Arshad">
     <meta property="og:image" content="<?php echo esc_url($image); ?>">
-    <meta property="og:image:alt" content="Muhammad Wasim Arshad, AI Solution Architect and Engineering Leader">
+    <meta property="og:image:alt" content="<?php echo esc_attr($image_alt); ?>">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="<?php echo esc_attr($title); ?>">
     <meta name="twitter:description" content="<?php echo esc_attr($description); ?>">
@@ -109,171 +116,6 @@ function imwasim_archive_title(string $title): string {
 }
 add_filter('get_the_archive_title', 'imwasim_archive_title');
 
-function imwasim_mcp_whiteboard(): string {
-    ob_start(); ?>
-    <figure class="interactive-figure whiteboard-figure">
-        <div class="whiteboard-scroll" role="region" aria-label="Scrollable MCP architecture diagram" tabindex="0">
-            <svg class="mcp-whiteboard" viewBox="0 0 1200 720" role="img" aria-labelledby="mcp-whiteboard-title mcp-whiteboard-desc">
-                <title id="mcp-whiteboard-title">Model Context Protocol architecture and request process</title>
-                <desc id="mcp-whiteboard-desc">A whiteboard diagram showing a user request entering an AI host and MCP client, crossing the MCP protocol boundary to servers that expose tools, resources, and prompts, then returning a structured result through an authorized and observable process.</desc>
-                <defs>
-                    <pattern id="paper-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#d8d4ca" opacity=".62"/></pattern>
-                    <filter id="marker-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="7" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4"/></filter>
-                    <marker id="arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#2563eb" stroke-width="2"/></marker>
-                    <marker id="arrow-green" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#059669" stroke-width="2"/></marker>
-                    <style>
-                        .wb-title{font:800 34px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.wb-sub{font:700 16px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.wb-label{font:800 20px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.wb-small{font:700 13px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.wb-code{font:700 12px "JetBrains Mono",monospace;fill:#334155}.wb-box{fill:#fffdf7;stroke-width:4;filter:url(#marker-rough)}.wb-line{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;filter:url(#marker-rough)}
-                    </style>
-                </defs>
-                <rect width="1200" height="720" rx="22" fill="#fffdf7"/><rect width="1200" height="720" rx="22" fill="url(#paper-dots)"/>
-                <text class="wb-title" x="48" y="58">MODEL CONTEXT PROTOCOL — THE COMPLETE PATH</text>
-                <path class="wb-line" d="M48 72 C285 64 510 78 782 69" stroke="#f59e0b" opacity=".75"/>
-                <text class="wb-sub" x="49" y="99">A standard contract between an AI application and external capabilities</text>
-
-                <g aria-label="User intent"><circle cx="88" cy="220" r="43" fill="#fef3c7" stroke="#d97706" stroke-width="4" filter="url(#marker-rough)"/><circle cx="88" cy="207" r="11" fill="none" stroke="#92400e" stroke-width="3"/><path d="M66 246c6-27 38-27 44 0" fill="none" stroke="#92400e" stroke-width="3"/><text class="wb-label" x="48" y="290">USER</text><text class="wb-small" x="31" y="314">intent + approval</text></g>
-                <path class="wb-line" d="M135 220 C165 210 180 213 207 218" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
-
-                <g aria-label="MCP host"><rect class="wb-box" x="220" y="132" width="270" height="184" rx="22" stroke="#2563eb"/><text class="wb-label" x="248" y="172">AI HOST</text><text class="wb-small" x="248" y="198">Chat • IDE • Agent app</text><rect x="248" y="218" width="110" height="64" rx="12" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text class="wb-small" x="268" y="246">LLM / agent</text><text class="wb-small" x="278" y="267">loop</text><rect x="373" y="218" width="92" height="64" rx="12" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/><text class="wb-small" x="390" y="246">policy +</text><text class="wb-small" x="391" y="267">consent</text></g>
-
-                <path class="wb-line" d="M490 220 C515 209 530 213 552 218" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
-                <g aria-label="MCP client"><rect class="wb-box" x="566" y="151" width="184" height="140" rx="22" stroke="#7c3aed"/><text class="wb-label" x="592" y="190">MCP CLIENT</text><text class="wb-small" x="592" y="218">1 connection</text><text class="wb-small" x="592" y="240">per server</text><text class="wb-code" x="592" y="267">JSON-RPC 2.0</text></g>
-
-                <path class="wb-line" d="M752 220 C785 203 805 208 837 218" stroke="#059669" marker-end="url(#arrow-green)"/>
-                <text class="wb-small" x="760" y="185">stdio or</text><text class="wb-small" x="755" y="201">Streamable HTTP</text>
-
-                <g aria-label="MCP servers"><rect class="wb-box" x="852" y="116" width="300" height="238" rx="22" stroke="#059669"/><text class="wb-label" x="880" y="156">MCP SERVER(S)</text><text class="wb-small" x="880" y="180">Adapters over real systems</text><rect x="880" y="201" width="76" height="55" rx="11" fill="#dcfce7" stroke="#059669" stroke-width="2"/><text class="wb-small" x="899" y="224">TOOLS</text><text class="wb-code" x="893" y="244">tools/call</text><rect x="966" y="201" width="82" height="55" rx="11" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text class="wb-small" x="975" y="224">RESOURCES</text><text class="wb-code" x="978" y="244">read</text><rect x="1058" y="201" width="67" height="55" rx="11" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/><text class="wb-small" x="1066" y="224">PROMPTS</text><text class="wb-code" x="1074" y="244">get</text><path class="wb-line" d="M887 295 C948 278 1054 279 1114 297" stroke="#059669"/><text class="wb-small" x="884" y="326">APIs • files • databases • SaaS</text></g>
-
-                <path class="wb-line" d="M1090 367 C1007 401 883 406 780 398 C664 389 541 391 421 401 C299 411 192 408 112 374" stroke="#059669" stroke-dasharray="10 11" marker-end="url(#arrow-green)"/>
-                <text class="wb-small" x="493" y="380">structured content blocks / errors / metadata</text>
-
-                <text class="wb-label" x="48" y="456">THE REQUEST LIFECYCLE</text>
-                <path class="wb-line" d="M48 466 C218 458 371 471 528 464" stroke="#ef4444" opacity=".72"/>
-                <g transform="translate(48 496)">
-                    <g transform="translate(0 0)"><circle cx="30" cy="30" r="27" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text class="wb-label" x="23" y="38">1</text><text class="wb-small" x="0" y="80">CONNECT</text><text class="wb-code" x="0" y="101">negotiate</text></g>
-                    <path class="wb-line" d="M70 30H142" stroke="#2563eb" marker-end="url(#arrow-blue)"/>
-                    <g transform="translate(158 0)"><circle cx="30" cy="30" r="27" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/><text class="wb-label" x="23" y="38">2</text><text class="wb-small" x="0" y="80">DISCOVER</text><text class="wb-code" x="0" y="101">*/list</text></g>
-                    <path class="wb-line" d="M229 30H301" stroke="#7c3aed" marker-end="url(#arrow-blue)"/>
-                    <g transform="translate(317 0)"><circle cx="30" cy="30" r="27" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text class="wb-label" x="23" y="38">3</text><text class="wb-small" x="0" y="80">SELECT</text><text class="wb-code" x="0" y="101">schema match</text></g>
-                    <path class="wb-line" d="M388 30H460" stroke="#d97706" marker-end="url(#arrow-blue)"/>
-                    <g transform="translate(476 0)"><circle cx="30" cy="30" r="27" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/><text class="wb-label" x="23" y="38">4</text><text class="wb-small" x="0" y="80">AUTHORIZE</text><text class="wb-code" x="0" y="101">policy + user</text></g>
-                    <path class="wb-line" d="M547 30H619" stroke="#ef4444" marker-end="url(#arrow-green)"/>
-                    <g transform="translate(635 0)"><circle cx="30" cy="30" r="27" fill="#dcfce7" stroke="#059669" stroke-width="3"/><text class="wb-label" x="23" y="38">5</text><text class="wb-small" x="0" y="80">EXECUTE</text><text class="wb-code" x="0" y="101">call/read/get</text></g>
-                    <path class="wb-line" d="M706 30H778" stroke="#059669" marker-end="url(#arrow-green)"/>
-                    <g transform="translate(794 0)"><circle cx="30" cy="30" r="27" fill="#cffafe" stroke="#0891b2" stroke-width="3"/><text class="wb-label" x="23" y="38">6</text><text class="wb-small" x="0" y="80">RETURN</text><text class="wb-code" x="0" y="101">typed result</text></g>
-                    <path class="wb-line" d="M865 30H937" stroke="#0891b2" marker-end="url(#arrow-blue)"/>
-                    <g transform="translate(953 0)"><circle cx="30" cy="30" r="27" fill="#e0e7ff" stroke="#4f46e5" stroke-width="3"/><text class="wb-label" x="23" y="38">7</text><text class="wb-small" x="0" y="80">OBSERVE</text><text class="wb-code" x="0" y="101">trace + audit</text></g>
-                </g>
-                <rect x="48" y="635" width="1104" height="50" rx="12" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 7"/><text class="wb-small" x="72" y="666">CONTROL BOUNDARY → The host owns model context and consent. The server validates every request and protects the system behind it.</text>
-            </svg>
-        </div>
-        <figcaption>Whiteboard map: intent enters the host, capabilities cross the MCP boundary, and a governed result returns to the agent loop. Swipe horizontally on smaller screens.</figcaption>
-    </figure>
-    <?php return (string) ob_get_clean();
-}
-add_shortcode('mcp_whiteboard', 'imwasim_mcp_whiteboard');
-
-function imwasim_software_architecture_whiteboard(): string {
-    ob_start(); ?>
-    <figure class="interactive-figure whiteboard-figure">
-        <div class="whiteboard-scroll" role="region" aria-label="Scrollable software architecture decision map" tabindex="0">
-            <svg class="architecture-whiteboard" viewBox="0 0 1200 720" role="img" aria-labelledby="architecture-board-title architecture-board-desc">
-                <title id="architecture-board-title">Software architecture decision map</title>
-                <desc id="architecture-board-desc">A whiteboard diagram showing how business goals, users, constraints, and risks become architecture decisions about boundaries, data, communication, and deployment, which are validated against quality attributes and production feedback.</desc>
-                <defs>
-                    <pattern id="architecture-paper-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#d8d4ca" opacity=".62"/></pattern>
-                    <filter id="architecture-marker-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="11" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4"/></filter>
-                    <marker id="architecture-arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#2563eb" stroke-width="2"/></marker>
-                    <marker id="architecture-arrow-green" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#059669" stroke-width="2"/></marker>
-                    <style>
-                        .ab-title{font:800 34px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.ab-sub{font:700 16px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.ab-label{font:800 20px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.ab-small{font:700 13px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.ab-code{font:700 12px "JetBrains Mono",monospace;fill:#334155}.ab-box{fill:#fffdf7;stroke-width:4;filter:url(#architecture-marker-rough)}.ab-line{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;filter:url(#architecture-marker-rough)}
-                    </style>
-                </defs>
-                <rect width="1200" height="720" rx="22" fill="#fffdf7"/><rect width="1200" height="720" rx="22" fill="url(#architecture-paper-dots)"/>
-                <text class="ab-title" x="48" y="58">SOFTWARE ARCHITECTURE — FROM NEED TO OPERATING SYSTEM</text>
-                <path class="ab-line" d="M48 72 C310 63 563 79 875 69" stroke="#f59e0b" opacity=".75"/>
-                <text class="ab-sub" x="49" y="99">Architecture is the set of consequential decisions that shape change, scale, and risk.</text>
-
-                <g aria-label="Architecture inputs"><rect class="ab-box" x="48" y="140" width="250" height="250" rx="22" stroke="#d97706"/><text class="ab-label" x="76" y="181">1 / DRIVERS</text><text class="ab-small" x="76" y="216">BUSINESS</text><text class="ab-code" x="76" y="238">outcomes • cost • time</text><text class="ab-small" x="76" y="276">USERS + WORKLOAD</text><text class="ab-code" x="76" y="298">traffic • latency • data</text><text class="ab-small" x="76" y="336">CONSTRAINTS + RISKS</text><text class="ab-code" x="76" y="358">skills • law • legacy</text></g>
-                <path class="ab-line" d="M300 260 C340 244 365 247 399 257" stroke="#2563eb" marker-end="url(#architecture-arrow-blue)"/>
-
-                <g aria-label="Architecture decisions"><rect class="ab-box" x="414" y="126" width="366" height="278" rx="24" stroke="#2563eb"/><text class="ab-label" x="444" y="167">2 / STRUCTURAL DECISIONS</text><rect x="444" y="194" width="140" height="70" rx="13" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/><text class="ab-small" x="469" y="224">BOUNDARIES</text><text class="ab-code" x="465" y="246">modules • services</text><rect x="610" y="194" width="140" height="70" rx="13" fill="#dcfce7" stroke="#059669" stroke-width="2"/><text class="ab-small" x="648" y="224">DATA</text><text class="ab-code" x="631" y="246">ownership • model</text><rect x="444" y="288" width="140" height="70" rx="13" fill="#f3e8ff" stroke="#7c3aed" stroke-width="2"/><text class="ab-small" x="466" y="318">INTERACTION</text><text class="ab-code" x="458" y="340">sync • async • API</text><rect x="610" y="288" width="140" height="70" rx="13" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/><text class="ab-small" x="632" y="318">DEPLOYMENT</text><text class="ab-code" x="634" y="340">runtime • topology</text></g>
-                <path class="ab-line" d="M782 260 C818 244 842 247 876 257" stroke="#059669" marker-end="url(#architecture-arrow-green)"/>
-
-                <g aria-label="Quality attributes"><rect class="ab-box" x="892" y="140" width="260" height="250" rx="22" stroke="#059669"/><text class="ab-label" x="920" y="181">3 / FITNESS</text><text class="ab-small" x="920" y="216">RELIABILITY</text><text class="ab-code" x="1022" y="216">SLO • recovery</text><text class="ab-small" x="920" y="251">SECURITY</text><text class="ab-code" x="1010" y="251">identity • data</text><text class="ab-small" x="920" y="286">PERFORMANCE</text><text class="ab-code" x="1022" y="286">p95 • capacity</text><text class="ab-small" x="920" y="321">CHANGEABILITY</text><text class="ab-code" x="1034" y="321">lead time</text><text class="ab-small" x="920" y="356">COST</text><text class="ab-code" x="975" y="356">build + operate</text></g>
-
-                <path class="ab-line" d="M1020 409 C1025 444 995 455 958 461 C769 491 410 480 222 456 C173 450 143 432 150 405" stroke="#ef4444" stroke-dasharray="10 11" marker-end="url(#architecture-arrow-blue)"/>
-                <text class="ab-small" x="462" y="448">evidence changes the design</text>
-
-                <text class="ab-label" x="48" y="505">THE ARCHITECTURE LOOP</text>
-                <path class="ab-line" d="M48 515 C231 507 390 520 563 513" stroke="#ef4444" opacity=".72"/>
-                <g transform="translate(48 548)">
-                    <g><circle cx="30" cy="30" r="27" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text class="ab-label" x="23" y="38">1</text><text class="ab-small" x="0" y="80">UNDERSTAND</text><text class="ab-code" x="0" y="101">context</text></g><path class="ab-line" d="M72 30H146" stroke="#d97706" marker-end="url(#architecture-arrow-blue)"/>
-                    <g transform="translate(162)"><circle cx="30" cy="30" r="27" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text class="ab-label" x="23" y="38">2</text><text class="ab-small" x="0" y="80">PRIORITIZE</text><text class="ab-code" x="0" y="101">quality goals</text></g><path class="ab-line" d="M234 30H308" stroke="#2563eb" marker-end="url(#architecture-arrow-blue)"/>
-                    <g transform="translate(324)"><circle cx="30" cy="30" r="27" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/><text class="ab-label" x="23" y="38">3</text><text class="ab-small" x="5" y="80">DESIGN</text><text class="ab-code" x="0" y="101">options</text></g><path class="ab-line" d="M396 30H470" stroke="#7c3aed" marker-end="url(#architecture-arrow-green)"/>
-                    <g transform="translate(486)"><circle cx="30" cy="30" r="27" fill="#dcfce7" stroke="#059669" stroke-width="3"/><text class="ab-label" x="23" y="38">4</text><text class="ab-small" x="0" y="80">VALIDATE</text><text class="ab-code" x="0" y="101">prototype • test</text></g><path class="ab-line" d="M558 30H632" stroke="#059669" marker-end="url(#architecture-arrow-green)"/>
-                    <g transform="translate(648)"><circle cx="30" cy="30" r="27" fill="#cffafe" stroke="#0891b2" stroke-width="3"/><text class="ab-label" x="23" y="38">5</text><text class="ab-small" x="0" y="80">DOCUMENT</text><text class="ab-code" x="0" y="101">ADR + diagrams</text></g><path class="ab-line" d="M720 30H794" stroke="#0891b2" marker-end="url(#architecture-arrow-blue)"/>
-                    <g transform="translate(810)"><circle cx="30" cy="30" r="27" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/><text class="ab-label" x="23" y="38">6</text><text class="ab-small" x="0" y="80">OBSERVE</text><text class="ab-code" x="0" y="101">measure • evolve</text></g>
-                </g>
-                <rect x="48" y="672" width="1104" height="30" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="8 7"/><text class="ab-code" x="72" y="692">GOOD ARCHITECTURE = explicit trade-offs + enforceable boundaries + production evidence</text>
-            </svg>
-        </div>
-        <figcaption>Whiteboard map: architecture turns business drivers into structural decisions, tests them against measurable quality attributes, and evolves through production feedback.</figcaption>
-    </figure>
-    <?php return (string) ob_get_clean();
-}
-add_shortcode('software_architecture_whiteboard', 'imwasim_software_architecture_whiteboard');
-
-function imwasim_ai_development_whiteboard(): string {
-    ob_start(); ?>
-    <figure class="interactive-figure whiteboard-figure">
-        <div class="whiteboard-scroll" role="region" aria-label="Scrollable diagram of AI impact across the software development lifecycle" tabindex="0">
-            <svg class="architecture-whiteboard" viewBox="0 0 1200 700" role="img" aria-labelledby="ai-sdlc-title ai-sdlc-desc">
-                <title id="ai-sdlc-title">AI impact across the software development lifecycle</title>
-                <desc id="ai-sdlc-desc">A whiteboard diagram showing AI assistance across discovery, architecture, coding, testing, review, delivery, and operations, with engineering context entering every stage and human accountability governing the complete lifecycle.</desc>
-                <defs>
-                    <pattern id="ai-paper-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#d8d4ca" opacity=".62"/></pattern>
-                    <filter id="ai-marker-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="29" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.4"/></filter>
-                    <marker id="ai-arrow-blue" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#2563eb" stroke-width="2"/></marker>
-                    <marker id="ai-arrow-green" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8" fill="none" stroke="#059669" stroke-width="2"/></marker>
-                    <style>.ai-title{font:800 34px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.ai-sub{font:700 16px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.ai-label{font:800 18px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.ai-small{font:700 13px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.ai-code{font:700 12px "JetBrains Mono",monospace;fill:#334155}.ai-box{fill:#fffdf7;stroke-width:4;filter:url(#ai-marker-rough)}.ai-line{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;filter:url(#ai-marker-rough)}</style>
-                </defs>
-                <rect width="1200" height="700" rx="22" fill="#fffdf7"/><rect width="1200" height="700" rx="22" fill="url(#ai-paper-dots)"/>
-                <text class="ai-title" x="48" y="58">AI IS CHANGING THE WHOLE SOFTWARE DELIVERY LOOP</text>
-                <path class="ai-line" d="M48 72 C292 63 530 79 833 69" stroke="#f59e0b" opacity=".75"/>
-                <text class="ai-sub" x="49" y="99">Speed comes from assistance. Value comes from context, verification, and flow.</text>
-
-                <g aria-label="Engineering context"><rect class="ai-box" x="48" y="142" width="212" height="250" rx="22" stroke="#d97706"/><text class="ai-label" x="75" y="181">CONTEXT IN</text><text class="ai-small" x="75" y="218">PRODUCT INTENT</text><text class="ai-code" x="75" y="240">users • outcomes</text><text class="ai-small" x="75" y="278">SYSTEM CONTEXT</text><text class="ai-code" x="75" y="300">code • APIs • data</text><text class="ai-small" x="75" y="338">ENGINEERING RULES</text><text class="ai-code" x="75" y="360">security • quality</text></g>
-                <path class="ai-line" d="M262 268 C296 251 318 254 347 266" stroke="#2563eb" marker-end="url(#ai-arrow-blue)"/>
-
-                <g aria-label="AI assisted software development lifecycle"><rect class="ai-box" x="362" y="125" width="790" height="302" rx="24" stroke="#2563eb"/><text class="ai-label" x="392" y="164">AI-ASSISTED SDLC</text>
-                    <g transform="translate(392 194)"><rect width="112" height="88" rx="15" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text class="ai-label" x="17" y="35">DISCOVER</text><text class="ai-code" x="17" y="59">summarize</text><text class="ai-code" x="17" y="76">clarify</text></g>
-                    <path class="ai-line" d="M512 238H544" stroke="#2563eb" marker-end="url(#ai-arrow-blue)"/>
-                    <g transform="translate(558 194)"><rect width="112" height="88" rx="15" fill="#ede9fe" stroke="#7c3aed" stroke-width="3"/><text class="ai-label" x="22" y="35">DESIGN</text><text class="ai-code" x="17" y="59">options</text><text class="ai-code" x="17" y="76">trade-offs</text></g>
-                    <path class="ai-line" d="M678 238H710" stroke="#7c3aed" marker-end="url(#ai-arrow-blue)"/>
-                    <g transform="translate(724 194)"><rect width="112" height="88" rx="15" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text class="ai-label" x="27" y="35">BUILD</text><text class="ai-code" x="17" y="59">generate</text><text class="ai-code" x="17" y="76">refactor</text></g>
-                    <path class="ai-line" d="M844 238H876" stroke="#2563eb" marker-end="url(#ai-arrow-green)"/>
-                    <g transform="translate(890 194)"><rect width="112" height="88" rx="15" fill="#dcfce7" stroke="#059669" stroke-width="3"/><text class="ai-label" x="29" y="35">TEST</text><text class="ai-code" x="17" y="59">cases</text><text class="ai-code" x="17" y="76">edge paths</text></g>
-                    <path class="ai-line" d="M1010 238H1042" stroke="#059669" marker-end="url(#ai-arrow-green)"/>
-                    <g transform="translate(1056 194)"><rect width="70" height="88" rx="15" fill="#fee2e2" stroke="#ef4444" stroke-width="3"/><text class="ai-label" x="10" y="35">SHIP</text><text class="ai-code" x="10" y="59">CI/CD</text><text class="ai-code" x="10" y="76">guard</text></g>
-                    <path class="ai-line" d="M1090 303 C1050 363 930 376 761 376 C582 376 469 359 430 304" stroke="#059669" stroke-dasharray="10 11" marker-end="url(#ai-arrow-green)"/>
-                    <text class="ai-small" x="612" y="346">operate • observe • learn • update context</text>
-                    <rect x="392" y="382" width="734" height="26" rx="9" fill="#f8fafc" stroke="#94a3b8" stroke-width="2" stroke-dasharray="7 6"/><text class="ai-code" x="412" y="400">AI proposes and executes bounded work. Engineers own the result.</text>
-                </g>
-
-                <text class="ai-label" x="48" y="486">WHAT CHANGES</text><path class="ai-line" d="M48 497 C160 487 266 504 376 495" stroke="#ef4444" opacity=".72"/>
-                <g transform="translate(48 528)"><rect width="248" height="108" rx="18" fill="#dbeafe" stroke="#2563eb" stroke-width="3"/><text class="ai-label" x="22" y="36">FROM TYPING TO INTENT</text><text class="ai-code" x="22" y="64">less boilerplate</text><text class="ai-code" x="22" y="84">more specification</text></g>
-                <g transform="translate(330 528)"><rect width="248" height="108" rx="18" fill="#dcfce7" stroke="#059669" stroke-width="3"/><text class="ai-label" x="22" y="36">FROM OUTPUT TO FLOW</text><text class="ai-code" x="22" y="64">optimize delivery</text><text class="ai-code" x="22" y="84">not code volume</text></g>
-                <g transform="translate(612 528)"><rect width="248" height="108" rx="18" fill="#fef3c7" stroke="#d97706" stroke-width="3"/><text class="ai-label" x="22" y="36">FROM REVIEW TO PROOF</text><text class="ai-code" x="22" y="64">tests • scans • evals</text><text class="ai-code" x="22" y="84">human judgment</text></g>
-                <g transform="translate(894 528)"><rect width="258" height="108" rx="18" fill="#f3e8ff" stroke="#7c3aed" stroke-width="3"/><text class="ai-label" x="22" y="36">FROM TASKS TO SYSTEMS</text><text class="ai-code" x="22" y="64">agents need boundaries</text><text class="ai-code" x="22" y="84">platforms + policy</text></g>
-                <text class="ai-small" x="48" y="674">THE PRACTICAL OUTCOME → faster feedback when trusted engineering practices surround the model.</text>
-            </svg>
-        </div>
-        <figcaption>Whiteboard map: AI assists every software-development stage, while product context, automated verification, and human accountability determine the quality of the outcome.</figcaption>
-    </figure>
-    <?php return (string) ob_get_clean();
-}
-add_shortcode('ai_development_whiteboard', 'imwasim_ai_development_whiteboard');
-
 function imwasim_related_articles(int $post_id): string {
     $related = new WP_Query([
         'post_type' => 'post',
@@ -310,9 +152,9 @@ function imwasim_related_articles(int $post_id): string {
 
 function imwasim_architecture_tradeoff_map(): string {
     ob_start(); ?>
-    <figure class="interactive-figure whiteboard-figure">
-        <div class="whiteboard-scroll" role="region" aria-label="Scrollable software architecture pattern trade-off map" tabindex="0">
-            <svg class="architecture-whiteboard architecture-pattern-map" viewBox="0 0 1200 590" role="img" aria-labelledby="pattern-map-title pattern-map-desc">
+    <figure class="interactive-figure diagram-figure">
+        <div class="diagram-scroll" role="region" aria-label="Scrollable software architecture pattern trade-off map" tabindex="0">
+            <svg class="architecture-diagram architecture-pattern-map" viewBox="0 0 1200 590" role="img" aria-labelledby="pattern-map-title pattern-map-desc">
                 <title id="pattern-map-title">Software architecture pattern trade-off map</title>
                 <desc id="pattern-map-desc">A comparison of layered architecture, modular monoliths, microservices, event-driven architecture, and clean or hexagonal architecture, showing their strongest use cases and primary costs.</desc>
                 <defs><pattern id="pattern-paper-dots" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#d8d4ca" opacity=".62"/></pattern><filter id="pattern-marker-rough" x="-10%" y="-10%" width="120%" height="120%"><feTurbulence type="fractalNoise" baseFrequency=".018" numOctaves="2" seed="19" result="noise"/><feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2"/></filter><style>.pm-title{font:800 32px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.pm-label{font:800 19px "Comic Sans MS","Marker Felt",cursive;fill:#172033}.pm-small{font:700 13px "Comic Sans MS","Marker Felt",cursive;fill:#536070}.pm-code{font:700 12px "JetBrains Mono",monospace;fill:#334155}.pm-box{fill:#fffdf7;stroke-width:4;filter:url(#pattern-marker-rough)}</style></defs>

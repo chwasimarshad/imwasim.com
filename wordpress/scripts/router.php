@@ -1,9 +1,10 @@
 <?php
 $root = realpath(__DIR__ . '/../../.local-preview/public');
+$repo = realpath(__DIR__ . '/../..');
 $path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';
 $target = realpath($root . $path);
 
-if ($target && str_starts_with($target, $root) && is_file($target)) {
+if ($target && is_file($target) && (str_starts_with($target, $root) || ($repo && str_starts_with($target, $repo)))) {
     return false;
 }
 
