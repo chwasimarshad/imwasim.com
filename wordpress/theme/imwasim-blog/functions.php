@@ -30,6 +30,7 @@ function imwasim_document_title(string $title): string {
         'model-context-protocol-mcp-introduction' => 'Model Context Protocol (MCP): AI Agents Guide | Wasim Arshad',
         'software-architecture-guide' => 'Software Architecture Guide: Scalable Systems | Wasim Arshad',
         'ai-impact-on-software-development' => 'AI Impact on Software Development: 2026 Guide | Wasim Arshad',
+        'software-testing-strategies' => 'Software Testing Strategies: Practical Guide | Wasim Arshad',
     ];
     $slug = get_post_field('post_name', get_queried_object_id());
     return $titles[$slug] ?? $title;
@@ -47,6 +48,7 @@ function imwasim_social_meta(): void {
         'model-context-protocol-mcp-introduction' => 'https://imwasim.com/img/blog/mcp-architecture-editorial.webp',
         'software-architecture-guide' => 'https://imwasim.com/img/blog/software-architecture-editorial.webp',
         'ai-impact-on-software-development' => 'https://imwasim.com/img/blog/ai-software-development-editorial.webp',
+        'software-testing-strategies' => 'https://imwasim.com/img/blog/software-testing-team.webp',
     ];
     $slug = $is_article ? get_post_field('post_name', get_queried_object_id()) : '';
     $image = $article_images[$slug] ?? 'https://imwasim.com/img/muhammad-wasim-arshad-720.webp';
@@ -258,6 +260,11 @@ function imwasim_faq_schema(): void {
             ['@type' => 'Question', 'name' => 'Will AI replace software developers?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'AI will automate parts of software work, but developers remain responsible for product intent, architecture, security, validation, trade-offs, and production outcomes. The role is changing toward engineering judgment and system stewardship.']],
             ['@type' => 'Question', 'name' => 'Does AI improve developer productivity?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'AI can reduce time spent on search, boilerplate, tests, documentation, and routine changes, but organization-level gains depend on code quality, review capacity, platform engineering, workflow design, and trusted delivery practices.']],
             ['@type' => 'Question', 'name' => 'What are the risks of AI-generated code?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Risks include incorrect behavior, insecure dependencies, fabricated APIs, weak edge-case handling, license or provenance concerns, sensitive-data exposure, and code that passes superficial review without fitting the system architecture.']],
+        ],
+        'software-testing-strategies' => [
+            ['@type' => 'Question', 'name' => 'What is a software testing strategy?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'A software testing strategy is a risk-based plan describing what a team will verify, at which testing layer, in which environment, with what data and automation, and which evidence is required before and after release.']],
+            ['@type' => 'Question', 'name' => 'How many end-to-end tests should a project have?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'There is no universal number. Keep enough end-to-end tests to protect valuable cross-system journeys, while testing most rules and edge cases through faster component and integration tests.']],
+            ['@type' => 'Question', 'name' => 'What should a team automate first?', 'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'Automate stable, repeated, high-value checks that produce clear results. Use human judgment for exploratory testing, usability assessment, and investigation.']],
         ],
     ];
     $slug = get_post_field('post_name', get_queried_object_id());

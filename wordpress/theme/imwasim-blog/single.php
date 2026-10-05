@@ -28,6 +28,12 @@
                 <figcaption>AI can accelerate the delivery loop, while engineers remain responsible for judgment and production outcomes.</figcaption>
             </figure>
             <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#direct-impact">Direct impact</a></li><li><a href="#lifecycle">AI across the SDLC</a></li><li><a href="#developer-role">Changing developer role</a></li><li><a href="#productivity">Productivity and delivery</a></li><li><a href="#risks">Risks and controls</a></li><li><a href="#adoption">Adoption playbook</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></nav>
+            <?php elseif (is_single('software-testing-strategies')) : ?>
+            <figure class="article-lead-media">
+                <img src="/img/blog/software-testing-team.webp" width="1600" height="900" alt="Software engineering team reviewing automated test evidence and release risks together" decoding="async" fetchpriority="high">
+                <figcaption>A useful testing strategy turns release decisions into evidence the whole team can understand.</figcaption>
+            </figure>
+            <nav class="toc" aria-label="Article contents"><strong>In this article</strong><ol><li><a href="#risk">Risk-based testing</a></li><li><a href="#layers">Testing layers</a></li><li><a href="#quality">Quality attributes</a></li><li><a href="#pipeline">Delivery feedback</a></li><li><a href="#production">Production verification</a></li><li><a href="#faq">Frequently asked questions</a></li></ol></nav>
             <?php endif; ?>
             <div class="article-content"><?php the_content(); ?></div>
         </div>
