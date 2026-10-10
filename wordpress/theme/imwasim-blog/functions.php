@@ -27,6 +27,7 @@ function imwasim_document_title(string $title): string {
         return $title;
     }
     $titles = [
+        'what-is-jev-typesafe-ai-system-one-model' => 'What Is Jev? TypeSafe AI’s System One Model | Wasim Arshad',
         'model-context-protocol-mcp-introduction' => 'Model Context Protocol (MCP): AI Agents Guide | Wasim Arshad',
         'software-architecture-guide' => 'Software Architecture Guide: Scalable Systems | Wasim Arshad',
         'ai-impact-on-software-development' => 'AI Impact on Software Development: 2026 Guide | Wasim Arshad',

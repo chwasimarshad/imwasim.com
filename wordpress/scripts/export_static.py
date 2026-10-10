@@ -16,6 +16,7 @@ OUTPUT = REPO / "blog"
 LOCAL_BASE = "http://127.0.0.1:8080/blog/"
 PRODUCTION_BASE = "https://imwasim.com/blog/"
 ARTICLE_SLUGS = (
+    "what-is-jev-typesafe-ai-system-one-model",
     "model-context-protocol-mcp-introduction",
     "software-architecture-guide",
     "ai-impact-on-software-development",
@@ -147,6 +148,7 @@ def write_support_files() -> None:
 
 ## Articles
 
+- [What Is Jev, TypeSafe AI’s System One Model?](https://imwasim.com/blog/what-is-jev-typesafe-ai-system-one-model/): A source-grounded guide to Jev, typed decisions, Choice, Score, Noul, confidence, API integration, pricing, and software architecture.
 - [Model Context Protocol (MCP): The Missing Link for AI Agents](https://imwasim.com/blog/model-context-protocol-mcp-introduction/): A visual and technical guide to MCP architecture, protocol flow, AI agents, tool calling, context engineering, Anthropic, OpenAI, and secure AI automation.
 - [Software Architecture: A Practical Guide to Scalable and Maintainable Systems](https://imwasim.com/blog/software-architecture-guide/): A practical, visual guide to software architecture principles, quality attributes, scalable system design, architecture patterns, trade-offs, C4 diagrams, and ADRs.
 - [AI Impact on Software Development: How Engineering Is Changing](https://imwasim.com/blog/ai-impact-on-software-development/): An original, visual guide to AI-assisted software development, developer productivity, coding, testing, architecture, DevOps, engineering skills, risk, and software quality.
